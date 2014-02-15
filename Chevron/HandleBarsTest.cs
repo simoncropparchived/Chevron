@@ -8,16 +8,15 @@ public class HandleBarsTest
     [Test]
     public void Sample()
     {
-        var templateContent = @"<p>Hello, my name is {{name}}. I am from {{hometown}}. I have ' +
+        var source = @"<p>Hello, my name is {{name}}. I am from {{hometown}}. I have ' +
              '{{kids.length}} kids:</p>' +
              '<ul>{{#kids}}<li>{{name}} is {{age}}</li>{{/kids}}</ul>";
-        using (var handleBars = new HandleBars())
+
+        var context = new
         {
-            var context = new
-            {
-                name = "Alan",
-                hometown = "Somewhere, TX",
-                kids = new []
+            name = "Alan",
+            hometown = "Somewhere, TX",
+            kids = new[]
                 {
                     new
                     {
@@ -25,25 +24,22 @@ public class HandleBarsTest
                         age = "4"
                     }
                 }
-            };
-            Approvals.Verify(handleBars.Transform(templateContent, context));
+        };
+
+        using (var handleBars = new HandleBars())
+        {
+            handleBars.RegisterTemplate("myTemplate", source);
+            Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
     }
 
     [Test]
     public void RegisterHelperSample()
     {
-        using (var handleBars = new HandleBars())
+        var source = "<ul>{{#posts}}<li>{{link_to}}</li>{{/posts}}</ul>";
+        var context = new
         {
-            handleBars.RegisterHelper("link_to",
-                @"function() {
-  return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
-}");
-            var source = "<ul>{{#posts}}<li>{{link_to}}</li>{{/posts}}</ul>";
-
-            var context = new
-            {
-                posts = new[]
+            posts = new[]
                 {
                     new
                     {
@@ -51,8 +47,43 @@ public class HandleBarsTest
                         body = "Hello World!"
                     }
                 }
-            };
-            Approvals.Verify(handleBars.Transform(source, context));
+        };
+        using (var handleBars = new HandleBars())
+        {
+            handleBars.RegisterHelper("link_to",
+                @"function() {
+  return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
+}");
+            handleBars.RegisterTemplate("myTemplate", source);
+            Approvals.Verify(handleBars.Transform("myTemplate", context));
+        }
+    }
+
+    [Test]
+    public void RegisterPartialsSample()
+    {
+        var source = "<ul>{{#people}}<li>{{> link}}</li>{{/people}}</ul>";
+        var context = new
+        {
+            people = new[]
+                {
+                    new
+                    {
+                        name = "Alan",
+                        id = 1
+                    },
+                    new
+                    {
+                        name = "Yehuda",
+                        id = 2
+                    }
+                }
+        };
+        using (var handleBars = new HandleBars())
+        {
+            handleBars.RegisterPartial("link",@"<a href=""/people/{{id}}"">{{name}}</a>");
+            handleBars.RegisterTemplate("myTemplate", source);
+            Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
     }
 

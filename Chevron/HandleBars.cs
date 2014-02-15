@@ -44,20 +44,28 @@ namespace Chevron
             return TransformStringContext(source, serializeObject);
         }
 
-        public string TransformStringContext(string source, string context)
+        public string TransformStringContext(string templateName, string context)
         {
-            var dataPart = string.Format(@"var data ={0};", context);
-            var sourcePart = string.Format(@"var source = '{0}';", source);
+            return (string)engine.Evaluate(string.Format("{0}_template({1});", templateName, context));
+        }
 
-            engine.Execute(sourcePart + @"var template = Handlebars.compile(source);
-" +
-                           dataPart);
+        public void RegisterTemplate(string name, string source)
+        {
+            var js = string.Format(
+                @"var {0}_source = '{1}';
+var {0}_template = Handlebars.compile({0}_source);", name, source);
+            engine.Execute(js);
+        }
 
-            return (string) engine.Evaluate("template(data)");
+        public void RegisterPartial(string name, string content)
+        {
+            var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, content);
+            engine.Execute(js);
         }
 
         public void Dispose()
         {
         }
+
     }
 }
