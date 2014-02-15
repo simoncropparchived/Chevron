@@ -33,16 +33,27 @@ namespace Chevron
             return Resource.AsString("handlebars.js");
         }
 
-        public string Transform(string input, object model)
+        public void RegisterHelper(string name, string js)
         {
-            var dataPart = string.Format(@"var data ={0};", SimpleJson.SerializeObject(model));
-            var sourcePart = string.Format(@"var source = '{0}';", input);
+            engine.Execute(@"Handlebars.registerHelper('" + name + "', " + js + ");");
+        }
 
-            engine.Execute(sourcePart+@"var template = Handlebars.compile(source);
-" + 
-dataPart);
+        public string Transform(string source, object context)
+        {
+            var serializeObject = SimpleJson.SerializeObject(context);
+            return TransformStringContext(source, serializeObject);
+        }
 
-            return (string)engine.Evaluate("template(data)");
+        public string TransformStringContext(string source, string context)
+        {
+            var dataPart = string.Format(@"var data ={0};", context);
+            var sourcePart = string.Format(@"var source = '{0}';", source);
+
+            engine.Execute(sourcePart + @"var template = Handlebars.compile(source);
+" +
+                           dataPart);
+
+            return (string) engine.Evaluate("template(data)");
         }
 
         public void Dispose()

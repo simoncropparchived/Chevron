@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using ApprovalTests;
 using Chevron;
 using NUnit.Framework;
 
@@ -13,29 +13,47 @@ public class HandleBarsTest
              '<ul>{{#kids}}<li>{{name}} is {{age}}</li>{{/kids}}</ul>";
         using (var handleBars = new HandleBars())
         {
-
-            var model = new Person
+            var context = new
             {
                 name = "Alan",
                 hometown = "Somewhere, TX",
-                kids = new List<Person>
+                kids = new []
                 {
-                    new Person
+                    new
                     {
-                        name = "Sally", 
+                        name = "Sally",
                         age = "4"
                     }
                 }
             };
-            ApprovalTests.Approvals.Verify(handleBars.Transform(templateContent, model));
+            Approvals.Verify(handleBars.Transform(templateContent, context));
         }
     }
 
-    public class Person
+    [Test]
+    public void RegisterHelperSample()
     {
-        public string name;
-        public string hometown;
-        public List<Person> kids;
-        public string age;
+        using (var handleBars = new HandleBars())
+        {
+            handleBars.RegisterHelper("link_to",
+                @"function() {
+  return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
+}");
+            var source = "<ul>{{#posts}}<li>{{link_to}}</li>{{/posts}}</ul>";
+
+            var context = new
+            {
+                posts = new[]
+                {
+                    new
+                    {
+                        url = "/hello-world",
+                        body = "Hello World!"
+                    }
+                }
+            };
+            Approvals.Verify(handleBars.Transform(source, context));
+        }
     }
+
 }
