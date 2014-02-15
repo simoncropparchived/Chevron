@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron", "Chevron\Chevron.csproj", "{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Deployable|Any CPU = Deployable|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Deployable|Any CPU.ActiveCfg = Deployable|Any CPU
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Deployable|Any CPU.Build.0 = Deployable|Any CPU
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

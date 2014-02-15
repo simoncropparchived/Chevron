@@ -18,3 +18,13 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+======== THIRD PARTY LICENSES ========
+
+
+This product uses MsieJavaScriptEngine (https://github.com/Taritsyn/MsieJavaScriptEngine)
+
+Which is licensed under Microsoft Public License (Ms-PL) (http://github.com/Taritsyn/MsieJavaScriptEngine/blob/master/LICENSE.md)
+
+You should also ensure that conform to the license requirements of MsieJavaScriptEngine
