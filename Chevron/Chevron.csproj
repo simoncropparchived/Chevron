@@ -81,8 +81,8 @@
     <Compile Include="AssemblyLocation.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Handlebars2.cs" />
-    <Compile Include="HandlebarsTest2.cs" />
+    <Compile Include="Handlebars.cs" />
+    <Compile Include="HandlebarsTest.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
