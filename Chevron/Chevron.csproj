@@ -83,8 +83,6 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="HandleBars.cs" />
     <Compile Include="HandleBarsTest.cs" />
-    <Compile Include="Options.cs" />
-    <Compile Include="RenderMethods.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

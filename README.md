@@ -130,7 +130,7 @@ The current version included in the library is v1.3.0. If you feel a newer versi
 
 ### Running a custom version
 
-If you want to run a custom version of HandlebaseJS simply place the custom handlebars.js in the current running directory and that file will be used instead of the merged version. 
+If you want to run a custom version of HandlebaseJS simply place the custom `handlebars.js` in the current running directory and that file will be used instead of the merged version. 
 
 ## MSIE JavaScript Engine for .NET
 
