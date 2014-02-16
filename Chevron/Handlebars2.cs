@@ -6,11 +6,11 @@ using Strike;
 
 namespace Chevron
 {
-    public class HandleBars : IDisposable
+    public class Handlebars : IDisposable
     {
         MsieJsEngine engine;
 
-        public HandleBars()
+        public Handlebars()
         {
             engine = new MsieJsEngine(JsEngineMode.Auto);
 

@@ -34,7 +34,7 @@ var context = new
         }
 };
 
-using (var handleBars = new HandleBars())
+using (var handleBars = new Handlebars())
 {
     handleBars.RegisterTemplate("myTemplate", source);
     Approvals.Verify(handleBars.Transform("myTemplate", context));
@@ -65,7 +65,7 @@ var context = new
             }
         }
 };
-using (var handleBars = new HandleBars())
+using (var handleBars = new Handlebars())
 {
     handleBars.RegisterHelper("link_to",
         @"function() {
@@ -105,7 +105,7 @@ var context = new
             }
         }
 };
-using (var handleBars = new HandleBars())
+using (var handleBars = new Handlebars())
 {
     handleBars.RegisterPartial("link",@"<a href=""/people/{{id}}"">{{name}}</a>");
     handleBars.RegisterTemplate("myTemplate", source);
