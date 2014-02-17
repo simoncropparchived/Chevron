@@ -39,6 +39,7 @@
 packages/
 ForSample/
 NugetBuild/
+NuGetBuildViewEngine/
 
 # Visual Studio profiler
 *.psess
