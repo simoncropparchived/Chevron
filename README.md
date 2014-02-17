@@ -4,11 +4,17 @@ Wraps [HandlebarsJS](http://handlebarsjs.com/) to make it usable from .net.
 
 ## Nuget
 
+### Core
+
 Nuget package http://nuget.org/packages/Chevron 
 
-To Install from the Nuget Package Manager Console 
-    
     PM> Install-Package Chevron
+
+### NancyFX integration
+
+Nuget package http://nuget.org/packages/Nancy.ViewEngines.Chevron
+
+    PM> Install-Package Nancy.ViewEngines.Chevron
 
 ## Usage
 
