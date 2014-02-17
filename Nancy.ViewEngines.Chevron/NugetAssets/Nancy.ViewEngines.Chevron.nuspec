@@ -3,7 +3,7 @@
   <metadata>
     <id>Nancy.ViewEngines.Chevron</id>
     <version>$version$</version>
-    <title>Chevron</title>
+    <title>Nancy.ViewEngines.Chevron</title>
     <authors>Simon Cropp</authors>
     <owners>Simon Cropp</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
