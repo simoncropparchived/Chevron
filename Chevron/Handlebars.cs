@@ -38,6 +38,11 @@ namespace Chevron
             return Resource.AsString("handlebars.js");
         }
 
+        public void RegisterHelper(string name, string js)
+        {
+            RegisterHelper(name, () => js);
+        }
+
         public void RegisterHelper(string name, Func<string> js)
         {
             if (!registeredHelpers.Contains(name))
@@ -67,6 +72,11 @@ namespace Chevron
             return (string)engine.Evaluate(string.Format("{0}_template({1});", templateName, context));
         }
 
+        public void RegisterTemplate(string name, string source)
+        {
+            RegisterTemplate(name, ()=>source);
+        }
+
         public void RegisterTemplate(string name, Func<string> source)
         {
             if (!registeredTemplates.Contains(name))
@@ -77,6 +87,11 @@ namespace Chevron
 var {0}_template = Handlebars.compile({0}_source);", name, source());
                 engine.Execute(js);
             }
+        }
+
+        public void RegisterPartial(string name, string content)
+        {
+            RegisterPartial(name, () => content);
         }
 
         public void RegisterPartial(string name, Func<string> content)
