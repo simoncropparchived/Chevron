@@ -28,8 +28,8 @@ public class HandlebarsTest
 
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterTemplate("myTemplate", source);
-            Approvals.Verify(handleBars.Transform("myTemplate", context));
+            handleBars.RegisterTemplate("Index",()=> source);
+            Approvals.Verify(handleBars.Transform("Index", context));
         }
     }
 
@@ -51,10 +51,10 @@ public class HandlebarsTest
         using (var handleBars = new Handlebars())
         {
             handleBars.RegisterHelper("link_to",
-                @"function() {
+                ()=>@"function() {
 return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
 }");
-            handleBars.RegisterTemplate("myTemplate", source);
+            handleBars.RegisterTemplate("myTemplate", ()=>source);
             Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
     }
@@ -81,8 +81,8 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
         };
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterPartial("link", @"<a href=""/people/{{id}}"">{{name}}</a>");
-            handleBars.RegisterTemplate("myTemplate", source);
+            handleBars.RegisterPartial("link", ()=>@"<a href=""/people/{{id}}"">{{name}}</a>");
+            handleBars.RegisterTemplate("myTemplate", ()=>source);
             Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
     }

@@ -77,18 +77,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ApprovalTestConfig.cs" />
     <Compile Include="AssemblyLocation.cs" />
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Handlebars.cs" />
     <Compile Include="HandlebarsTest.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="StringExtensions.cs" />
+    <Compile Include="ThreadLocalHandlebars.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NugetAssets\Chevron.nuspec" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
