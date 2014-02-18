@@ -77,6 +77,17 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
     }
 
     [Test]
+    public void CaseInsensitve()
+    {
+        var source = "{{>partial}}";
+        using (var handleBars = new Handlebars())
+        {
+            handleBars.RegisterPartial("Partial", @"partialcontent");
+            handleBars.RegisterTemplate("mytemplate", source);
+            Approvals.Verify(handleBars.Transform("myTemplate", null));
+        }
+    }
+    [Test]
     public void RegisterPartialsSample()
     {
         var source = "<ul>{{#people}}<li>{{> link}}</li>{{/people}}</ul>";

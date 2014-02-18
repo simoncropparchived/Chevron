@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Web;
 using MsieJavaScriptEngine;
 using Resourcer;
 using Strike;
@@ -70,6 +69,7 @@ namespace Chevron
 
         public string TransformStringContext(string templateName, string context)
         {
+            templateName = templateName.ToLowerInvariant();
             return (string)engine.Evaluate(string.Format("{0}_template({1});", templateName, context));
         }
 
@@ -78,16 +78,15 @@ namespace Chevron
             RegisterTemplate(name, ()=>source);
         }
 
-        public void RegisterTemplate(string name, Func<string> content)
+        public void RegisterTemplate(string name, Func<string> source)
         {
+            name = name.ToLowerInvariant();
             if (!registeredTemplates.Contains(name))
             {
                 registeredTemplates.Add(name);
-                var templateContent = content();
-                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
                 var js = string.Format(
                     @"var {0}_source = '{1}';
-var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
+var {0}_template = Handlebars.compile({0}_source);", name, source());
                 engine.Execute(js);
             }
         }
@@ -99,12 +98,11 @@ var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
 
         public void RegisterPartial(string name, Func<string> content)
         {
+            name = name.ToLowerInvariant();
             if (!registeredPartials.Contains(name))
             {
                 registeredPartials.Add(name);
-                var templateContent = content();
-                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
-                var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, templateContent);
+                var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, content());
                 engine.Execute(js);
             }
         }
