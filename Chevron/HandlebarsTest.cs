@@ -8,12 +8,11 @@ public class HandlebarsTest
     [Test]
     public void Sample()
     {
-        var source = 
-@"
+        var source = @"
 <p>Hello, my name is {{name}}. I am from {{hometown}}. I have {{kids.length}} kids:</p>
 <ul>
     {{#kids}}
-        <li>{{name}} is {{age}}</li>
+    <li>{{name}} is {{age}}</li>
     {{/kids}}
 </ul>";
 
@@ -33,8 +32,8 @@ public class HandlebarsTest
 
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterTemplate("Index", source);
-            Approvals.Verify(handleBars.Transform("Index", context));
+            handleBars.RegisterTemplate("Inde$x", source);
+            Approvals.Verify(handleBars.Transform("Inde$x", context));
         }
     }
 
@@ -53,7 +52,16 @@ public class HandlebarsTest
     [Test]
     public void RegisterHelperSample()
     {
-        var source = "<ul>{{#posts}}<li>{{link_to}}</li>{{/posts}}</ul>";
+        var helperjs =
+            @"function() {
+return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
+}";
+        var source = @"
+<ul>
+{{#posts}}
+    <li>{{link_to}}</li>
+{{/posts}}
+</ul>";
         var context = new
         {
             posts = new[]
@@ -67,17 +75,14 @@ public class HandlebarsTest
         };
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterHelper("link_to",
-                ()=>@"function() {
-return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
-}");
+            handleBars.RegisterHelper("link_to", helperjs);
             handleBars.RegisterTemplate("myTemplate", source);
             Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
     }
 
     [Test]
-    public void CaseInsensitve()
+    public void CaseInsensitive()
     {
         var source = "{{>partial}}";
         using (var handleBars = new Handlebars())
@@ -87,10 +92,19 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
             Approvals.Verify(handleBars.Transform("myTemplate", null));
         }
     }
+
     [Test]
     public void RegisterPartialsSample()
     {
-        var source = "<ul>{{#people}}<li>{{> link}}</li>{{/people}}</ul>";
+        var partial = @"<a href=""/people/{{id}}"">{{name}}</a>";
+
+        var source = @"
+<ul>
+{{#people}}
+    <li>{{> link}}</li>
+{{/people}}
+</ul>";
+
         var context = new
         {
             people = new[]
@@ -109,7 +123,7 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
         };
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterPartial("link", @"<a href=""/people/{{id}}"">{{name}}</a>");
+            handleBars.RegisterPartial("link", partial);
             handleBars.RegisterTemplate("myTemplate", source);
             Approvals.Verify(handleBars.Transform("myTemplate", context));
         }

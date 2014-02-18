@@ -86,6 +86,8 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Handlebars.cs" />
     <Compile Include="HandlebarsTest.cs" />
+    <Compile Include="VariableNameValidator.cs" />
+    <Compile Include="VariableNameValidatorTest.cs" />
     <Compile Include="SimpleJson.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ThreadLocalHandlebars.cs" />

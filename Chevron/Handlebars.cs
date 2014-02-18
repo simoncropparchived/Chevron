@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Web;
 using MsieJavaScriptEngine;
 using Resourcer;
@@ -49,7 +50,7 @@ namespace Chevron
             if (!registeredHelpers.Contains(name))
             {
                 registeredHelpers.Add(name);
-                var code = @"Handlebars.registerHelper('" + name + "', " + js() + ");";
+                var code = string.Format(@"Handlebars.registerHelper('{0}', {1});", name, js());
                 engine.Execute(code);
             }
         }
@@ -84,14 +85,33 @@ namespace Chevron
             name = name.ToLowerInvariant();
             if (!registeredTemplates.Contains(name))
             {
+                VariableNameValidator.ValidateSuffix(name);
                 registeredTemplates.Add(name);
                 var templateContent = content();
-                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
+                templateContent = SanitizeContent(templateContent);
                 var js = string.Format(
                     @"var {0}_source = '{1}';
 var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
                 engine.Execute(js);
             }
+        }
+
+        static string SanitizeContent(string templateContent)
+        {
+            var stringReader = new StringReader(templateContent);
+            var stringBuilder = new StringBuilder();
+            string line;
+            while ((line = stringReader.ReadLine()) != null)
+            {
+                var trim = line.Trim();
+                if (trim.StartsWith("{{") && trim.EndsWith("}}"))
+                {
+                    stringBuilder.Append(trim);
+                    continue;
+                }
+                stringBuilder.AppendLine(line);
+            }
+            return HttpUtility.JavaScriptStringEncode(stringBuilder.ToString());
         }
 
         public void RegisterPartial(string name, string content)
@@ -104,9 +124,10 @@ var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
             name = name.ToLowerInvariant();
             if (!registeredPartials.Contains(name))
             {
+                VariableNameValidator.ValidateSuffix(name);
                 registeredPartials.Add(name);
                 var templateContent = content();
-                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
+                templateContent = SanitizeContent(templateContent);
                 var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, templateContent);
                 engine.Execute(js);
             }
