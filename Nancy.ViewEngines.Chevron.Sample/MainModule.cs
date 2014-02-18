@@ -5,7 +5,7 @@ public class MainModule : NancyModule
 {
     public MainModule()
     {
-        Get["/"] = (x) =>
+        Get["/"] = x =>
         {
             var version = typeof (ChevronViewEngine).Assembly.GetName().Version;
             var model = new

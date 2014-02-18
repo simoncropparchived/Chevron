@@ -28,8 +28,20 @@ public class HandlebarsTest
 
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterTemplate("Index",source);
+            handleBars.RegisterTemplate("Index", source);
             Approvals.Verify(handleBars.Transform("Index", context));
+        }
+    }
+
+    [Test]
+    public void NewLineInTemplate()
+    {
+        var source = "AA\r\nBB";
+
+        using (var handleBars = new Handlebars())
+        {
+            handleBars.RegisterTemplate("Index", source);
+            Approvals.Verify(handleBars.Transform("Index", null));
         }
     }
 

@@ -65,7 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fody.targets" />
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.nuspec" />
+    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

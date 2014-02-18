@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web;
 using MsieJavaScriptEngine;
 using Resourcer;
 using Strike;
@@ -77,14 +78,16 @@ namespace Chevron
             RegisterTemplate(name, ()=>source);
         }
 
-        public void RegisterTemplate(string name, Func<string> source)
+        public void RegisterTemplate(string name, Func<string> content)
         {
             if (!registeredTemplates.Contains(name))
             {
                 registeredTemplates.Add(name);
+                var templateContent = content();
+                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
                 var js = string.Format(
                     @"var {0}_source = '{1}';
-var {0}_template = Handlebars.compile({0}_source);", name, source());
+var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
                 engine.Execute(js);
             }
         }
@@ -99,7 +102,9 @@ var {0}_template = Handlebars.compile({0}_source);", name, source());
             if (!registeredPartials.Contains(name))
             {
                 registeredPartials.Add(name);
-                var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, content());
+                var templateContent = content();
+                templateContent = HttpUtility.JavaScriptStringEncode(templateContent);
+                var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, templateContent);
                 engine.Execute(js);
             }
         }
