@@ -32,8 +32,8 @@ public class HandlebarsTest
 
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterTemplate("Inde$x", source);
-            Approvals.Verify(handleBars.Transform("Inde$x", context));
+            handleBars.RegisterTemplate("Index", source);
+            Approvals.Verify(handleBars.Transform("Index", context));
         }
     }
 
@@ -84,10 +84,9 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
     [Test]
     public void CaseInsensitive()
     {
-        var source = "{{>partial}}";
+        var source = "Foo";
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterPartial("Partial", @"partialcontent");
             handleBars.RegisterTemplate("mytemplate", source);
             Approvals.Verify(handleBars.Transform("myTemplate", null));
         }

@@ -25,7 +25,6 @@ namespace Chevron
             engine.Execute(handlebarsJsText);
         }
 
-
         /// <summary>
         /// Get the content of handlebars.js
         /// By default handlebars.js is read from an embedded resource.
@@ -72,7 +71,13 @@ namespace Chevron
         public string TransformStringContext(string templateName, string context)
         {
             templateName = templateName.ToLowerInvariant();
-            return (string)engine.Evaluate(string.Format("{0}_template({1});", templateName, context));
+
+            if (!registeredTemplates.Contains(templateName))
+            {
+                throw new Exception(string.Format("Could not find a template named '{0}'.", templateName));
+            }
+            var expression = string.Format("chevronTemplate_{0}({1});", templateName, context);
+            return (string) engine.Evaluate(expression);
         }
 
         public void RegisterTemplate(string name, string source)
@@ -80,19 +85,19 @@ namespace Chevron
             RegisterTemplate(name, ()=>source);
         }
 
-        public void RegisterTemplate(string name, Func<string> content)
+        public void RegisterTemplate(string templateName, Func<string> content)
         {
-            name = name.ToLowerInvariant();
-            if (!registeredTemplates.Contains(name))
+            templateName = templateName.ToLowerInvariant();
+            if (!registeredTemplates.Contains(templateName))
             {
-                VariableNameValidator.ValidateSuffix(name);
-                registeredTemplates.Add(name);
+                VariableNameValidator.ValidateSuffix(templateName);
+                registeredTemplates.Add(templateName);
                 var templateContent = content();
                 templateContent = SanitizeContent(templateContent);
-                var js = string.Format(
+                var code = string.Format(
                     @"var {0}_source = '{1}';
-var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
-                engine.Execute(js);
+var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templateContent);
+                engine.Execute(code);
             }
         }
 
@@ -114,22 +119,20 @@ var {0}_template = Handlebars.compile({0}_source);", name, templateContent);
             return HttpUtility.JavaScriptStringEncode(stringBuilder.ToString());
         }
 
-        public void RegisterPartial(string name, string content)
+        public void RegisterPartial(string partialName, string content)
         {
-            RegisterPartial(name, () => content);
+            RegisterPartial(partialName, () => content);
         }
 
-        public void RegisterPartial(string name, Func<string> content)
+        public void RegisterPartial(string partialName, Func<string> content)
         {
-            name = name.ToLowerInvariant();
-            if (!registeredPartials.Contains(name))
+            if (!registeredPartials.Contains(partialName))
             {
-                VariableNameValidator.ValidateSuffix(name);
-                registeredPartials.Add(name);
+                registeredPartials.Add(partialName);
                 var templateContent = content();
                 templateContent = SanitizeContent(templateContent);
-                var js = string.Format("Handlebars.registerPartial('{0}', '{1}');", name, templateContent);
-                engine.Execute(js);
+                var code = string.Format("Handlebars.registerPartial('{0}', '{1}');", partialName, templateContent);
+                engine.Execute(code);
             }
         }
 

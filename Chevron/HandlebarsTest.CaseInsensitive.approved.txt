@@ -1,1 +1,1 @@
-﻿partialcontent
+﻿Foo
