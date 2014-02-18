@@ -1,1 +1,7 @@
-﻿<p>Hello, my name is Alan. I am from Somewhere, TX. I have 1 kids:</p><ul><li>Sally is 4</li></ul>
+﻿
+<p>Hello, my name is Alan. I am from Somewhere, TX. I have 1 kids:</p>
+<ul>
+    
+        <li>Sally is 4</li>
+    
+</ul>
