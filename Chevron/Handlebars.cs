@@ -5,7 +5,6 @@ using System.Text;
 using System.Web;
 using MsieJavaScriptEngine;
 using Resourcer;
-using Strike;
 
 namespace Chevron
 {

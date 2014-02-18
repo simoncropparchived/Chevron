@@ -63,12 +63,12 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-using Strike.Reflection;
+using Chevron.Reflection;
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
 // ReSharper disable SuggestUseVarKeywordEvident
-namespace Strike
+namespace Chevron
 {
     /// <summary>
     /// Represents the json array.
@@ -481,7 +481,7 @@ namespace Strike
     }
 }
 
-namespace Strike
+namespace Chevron
 {
     /// <summary>
     /// This class encodes and decodes JSON strings.
