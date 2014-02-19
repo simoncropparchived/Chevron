@@ -68,7 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\Index.handebars">
+    <None Include="Views\Index.handlebars">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

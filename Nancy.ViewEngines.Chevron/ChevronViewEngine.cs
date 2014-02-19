@@ -25,7 +25,7 @@ namespace Nancy.ViewEngines.Chevron
         /// </summary>
         public IEnumerable<string> Extensions
         {
-            get { return new[] {"handebars"}; }
+            get { return new[] {"handlebars"}; }
         }
 
         /// <summary>

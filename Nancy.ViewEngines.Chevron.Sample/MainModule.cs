@@ -13,7 +13,7 @@ public class MainModule : NancyModule
                 ViewEngineName = "Chevron",
                 ViewEngineVersion = version.ToString(3)
             };
-            return View["Index.handebars", model];
+            return View["Index.handlebars", model];
         };
 
     }
