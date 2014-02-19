@@ -11,8 +11,14 @@ namespace Chevron
         bool valueCreated;
 
         public ThreadLocalHandlebars()
+            : this(() => new Handlebars())
         {
-            threadLocal = new ThreadLocal<Handlebars>(()=>new Handlebars());
+            threadLocal = new ThreadLocal<Handlebars>();
+        }
+
+        public ThreadLocalHandlebars(Func<Handlebars> builder)
+        {
+            threadLocal = new ThreadLocal<Handlebars>(builder);
         }
 
         public void Dispose()

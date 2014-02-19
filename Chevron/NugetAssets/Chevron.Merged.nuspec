@@ -1,22 +1,19 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Nancy.ViewEngines.Chevron</id>
+    <id>Chevron.Merged</id>
     <version>$version$</version>
-    <title>Nancy.ViewEngines.Chevron</title>
+    <title>Chevron.Merged</title>
     <authors>Simon Cropp</authors>
     <owners>Simon Cropp</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>http://github.com/SimonCropp/Chevron</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://raw.github.com/SimonCropp/Chevron/master/Icons/package_icon.png</iconUrl>
-    <description>Wraps handlebars.js (http://handlebarsjs.com/) to make it usable as a NancyFX view engine.</description>
+    <description>Wraps handlebars.js (http://handlebarsjs.com/) to make it usable from .net. The MsieJavaScriptEngine assembly is ILMerged.</description>
     <language>en-AU</language>
-    <tags>handlebars.js, Chevron, handlebars, nancyfx</tags>
+    <tags>handlebars.js, Chevron, handlebars</tags>
     <dependencies>
-      <dependency id="Nancy"/>
-      <dependency id="Chevron"/>
-      <dependency id="MsieJavaScriptEngine"/>
     </dependencies>
   </metadata>
 </package>

@@ -140,7 +140,7 @@ If you want to run a custom version of HandlebaseJS simply place the custom `han
 
 ## MSIE JavaScript Engine for .NET
 
-The binary ships with an ILMerged copy of the [MSIE JavaScript Engine](https://github.com/Taritsyn/MsieJavaScriptEngine/). It also gives ceridt to various other libraries for its' inspiration [MSIE JavaScript Engine Credits](https://github.com/Taritsyn/MsieJavaScriptEngine#credits). Also see the [License](http://github.com/Taritsyn/MsieJavaScriptEngine/blob/master/LICENSE.md).
+The project uses the [MSIE JavaScript Engine](https://github.com/Taritsyn/MsieJavaScriptEngine/). It also gives credit to various other libraries for its' inspiration [MSIE JavaScript Engine Credits](https://github.com/Taritsyn/MsieJavaScriptEngine#credits). Also see the [License](http://github.com/Taritsyn/MsieJavaScriptEngine/blob/master/LICENSE.md).
 
 ## Icon 
 

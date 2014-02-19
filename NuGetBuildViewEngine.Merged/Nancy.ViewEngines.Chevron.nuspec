@@ -16,7 +16,6 @@
     <dependencies>
       <dependency id="Nancy"/>
       <dependency id="Chevron"/>
-      <dependency id="MsieJavaScriptEngine"/>
     </dependencies>
   </metadata>
 </package>

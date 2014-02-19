@@ -16,12 +16,15 @@ namespace Chevron
         List<string> registeredPartials = new List<string>(); 
         List<string> registeredHelpers = new List<string>(); 
 
-        public Handlebars()
+        public Handlebars(MsieJsEngine engine)
         {
-            engine = new MsieJsEngine(JsEngineMode.Auto);
-
+            this.engine = engine;
             var handlebarsJsText = GetHandlebarsJsText();
             engine.Execute(handlebarsJsText);
+        }
+
+        public Handlebars():this (new MsieJsEngine(JsEngineMode.Auto))
+        {
         }
 
         /// <summary>
