@@ -1,26 +1,29 @@
 using System;
 using System.Linq;
 
-static class VariableNameValidator
+namespace Chevron
 {
-    public static void ValidateSuffix(string variableName)
+    public static class VariableNameValidator
     {
-        if (variableName.Any(ch => !IsValidChar(ch)))
+        public static void ValidateSuffix(string variableName)
         {
-            throw new Exception(string.Format("The string '{0}' is not a valid name.", variableName));
+            if (variableName.Any(ch => !IsValidChar(ch)))
+            {
+                throw new Exception(string.Format("The string '{0}' is not a valid name.", variableName));
+            }
         }
-    }
 
-    static bool IsValidChar(char ch)
-    {
-        return IsANumber(ch) ||
-            char.IsLetter(ch) ||
-            ch == '_' ||
-            ch == '$';
-    }
+        static bool IsValidChar(char ch)
+        {
+            return IsANumber(ch) ||
+                   char.IsLetter(ch) ||
+                   ch == '_' ||
+                   ch == '$';
+        }
 
-    public static bool IsANumber(this char ch)
-    {
-        return ch >= '0' && ch <= '9';
+        public static bool IsANumber(this char ch)
+        {
+            return ch >= '0' && ch <= '9';
+        }
     }
 }

@@ -34,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deployable|AnyCPU'">
     <OutputPath>bin\Deployable\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;Scalpel</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -92,6 +92,7 @@
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Deployable' ">
     <ItemGroup>
       <FilesToDelete Include="$(SolutionDir)NuGetBuildViewEngine\**\*.*" />
+      <FilesToDelete Include="$(SolutionDir)NuGetBuildViewEngine.Merged\**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(SolutionDir)NuGetBuildViewEngine" />
@@ -100,12 +101,6 @@
     <Copy SourceFiles="$(OutputPath)Nancy.ViewEngines.Chevron.pdb" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine\Lib\NET40" />
     <Copy SourceFiles="$(OutputPath)Nancy.ViewEngines.Chevron.xml" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine\Lib\NET40" />
     <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuildViewEngine" MetadataAssembly="$(OutputPath)Nancy.ViewEngines.Chevron.dll" />
-
-
-    <ItemGroup>
-      <FilesToDelete Include="$(SolutionDir)NuGetBuildViewEngine.Merged\**\*.*" />
-    </ItemGroup>
-    <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(SolutionDir)NuGetBuildViewEngine.Merged" />
     <MakeDir Directories="$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40\" />
     <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot;  &quot;$(TargetDir)Chevron.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />

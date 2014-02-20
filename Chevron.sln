@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.Sample", "Nancy.ViewEngines.Chevron.Sample\Nancy.ViewEngines.Chevron.Sample.csproj", "{FDB2A524-1865-4637-971A-DF0022844E7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,12 @@ Global
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Deployable|Any CPU.Build.0 = Debug|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Deployable|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Deployable|Any CPU.Build.0 = Debug|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
