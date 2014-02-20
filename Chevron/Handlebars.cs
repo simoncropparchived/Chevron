@@ -58,16 +58,17 @@ namespace Chevron
 
         public string Transform(string templateName, object context)
         {
-            string serializeObject;
+            var serializeObject = SerializeObject(context);
+            return TransformStringContext(templateName, serializeObject);
+        }
+
+        public string SerializeObject(object context)
+        {
             if (context == null)
             {
-                serializeObject = "{}";
+                return "{}";
             }
-            else
-            {
-                serializeObject = SimpleJson.SerializeObject(context);
-            }
-            return TransformStringContext(templateName, serializeObject);
+            return SimpleJson.SerializeObject(context);
         }
 
         public string TransformStringContext(string templateName, string context)
