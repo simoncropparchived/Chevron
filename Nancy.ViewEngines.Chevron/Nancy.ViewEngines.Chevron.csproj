@@ -109,7 +109,7 @@
     <MakeDir Directories="$(SolutionDir)NuGetBuildViewEngine.Merged" />
     <MakeDir Directories="$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40\" />
     <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot;  &quot;$(TargetDir)Chevron.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
-    <Copy SourceFiles="$(ProjectDir)NugetAssets\Nancy.ViewEngines.Chevron.nuspec" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine.Merged" />
+    <Copy SourceFiles="$(ProjectDir)NugetAssets\Nancy.ViewEngines.Chevron.Merged.nuspec" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine.Merged" />
     <Copy SourceFiles="$(OutputPath)Nancy.ViewEngines.Chevron.pdb" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40" />
     <Copy SourceFiles="$(OutputPath)Nancy.ViewEngines.Chevron.xml" DestinationFolder="$(SolutionDir)NuGetBuildViewEngine.Merged\Lib\NET40" />
     <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuildViewEngine.Merged" MetadataAssembly="$(OutputPath)Nancy.ViewEngines.Chevron.dll" />
