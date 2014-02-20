@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Threading;
-using Janitor;
 
 namespace Chevron
 {
-    [SkipWeaving]
     public class ThreadLocalHandlebars : IDisposable
     {
         ThreadLocal<Handlebars> threadLocal;
-        bool valueCreated;
 
         public ThreadLocalHandlebars()
             : this(() => new Handlebars())
         {
-            threadLocal = new ThreadLocal<Handlebars>();
         }
 
         public ThreadLocalHandlebars(Func<Handlebars> builder)
@@ -29,7 +25,6 @@ namespace Chevron
         {
             get
             {
-                valueCreated = true;
                 return threadLocal.Value;
             }
         }
@@ -39,7 +34,7 @@ namespace Chevron
         {
             if (threadLocal != null)
             {
-                if (valueCreated)
+                if (threadLocal.IsValueCreated)
                 {
                     threadLocal.Value.Dispose();
                 }
