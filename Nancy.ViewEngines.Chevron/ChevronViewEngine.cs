@@ -13,11 +13,15 @@ namespace Nancy.ViewEngines.Chevron
     public class ChevronViewEngine : IViewEngine, IDisposable
     {
         IViewLocator viewLocator;
-        ThreadLocalHandlebars handlebars;
+        ThreadLocalHandlebars threadLocalHandlebars;
 
-        public ChevronViewEngine()
+        public ChevronViewEngine(ThreadLocalHandlebars threadLocalHandlebars)
         {
-            handlebars = new ThreadLocalHandlebars();
+            this.threadLocalHandlebars = threadLocalHandlebars;
+        }
+
+        public ChevronViewEngine():this(new ThreadLocalHandlebars())
+        {
         }
 
         /// <summary>
@@ -52,7 +56,7 @@ namespace Nancy.ViewEngines.Chevron
                 {
                     var templateName = viewLocationResult.Name;
                     
-                    handlebars.Value.RegisterTemplate(templateName, () =>
+                    threadLocalHandlebars.Value.RegisterTemplate(templateName, () =>
                     {
                         using (var textReader = viewLocationResult.Contents())
                         {
@@ -62,7 +66,7 @@ namespace Nancy.ViewEngines.Chevron
                     });
                     foreach (var partial in viewLocator.GetAllCurrentlyDiscoveredViews().Where(x => x.Name.StartsWith("_")))
                     {
-                        handlebars.Value.RegisterPartial(partial.Name, () =>
+                        threadLocalHandlebars.Value.RegisterPartial(partial.Name, () =>
                         {
                             using (var textReader = partial.Contents())
                             {
@@ -72,7 +76,7 @@ namespace Nancy.ViewEngines.Chevron
                     }
                     using (var writer = new StreamWriter(stream))
                     {
-                        var output = handlebars.Value.Transform(templateName, model);
+                        var output = threadLocalHandlebars.Value.Transform(templateName, model);
                         writer.Write(output);
                     }
                 }
