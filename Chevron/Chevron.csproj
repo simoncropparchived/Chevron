@@ -124,6 +124,7 @@
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(SolutionDir)NuGetBuild.Merged" />
+    <MakeDir Directories="$(SolutionDir)NuGetBuild.Merged\Lib\NET40" />
     <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(SolutionDir)NuGetBuild.Merged\Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\Chevron.Merged.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild.Merged" />
     <Copy SourceFiles="$(OutputPath)Chevron.pdb" DestinationFolder="$(SolutionDir)NuGetBuild.Merged\Lib\NET40" />
