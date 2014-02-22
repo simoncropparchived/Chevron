@@ -1,45 +1,60 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron", "Chevron\Chevron.csproj", "{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.IE", "Chevron.IE\Chevron.IE.csproj", "{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron", "Nancy.ViewEngines.Chevron\Nancy.ViewEngines.Chevron.csproj", "{A55C7CAD-B531-43C9-B28D-EE509CF94983}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.IE", "Nancy.ViewEngines.Chevron.IE\Nancy.ViewEngines.Chevron.IE.csproj", "{A55C7CAD-B531-43C9-B28D-EE509CF94983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.Sample", "Nancy.ViewEngines.Chevron.Sample\Nancy.ViewEngines.Chevron.Sample.csproj", "{FDB2A524-1865-4637-971A-DF0022844E7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.IE.Sample", "Nancy.ViewEngines.Chevron.IE.Sample\Nancy.ViewEngines.Chevron.IE.Sample.csproj", "{FDB2A524-1865-4637-971A-DF0022844E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.IE.Tests", "Chevron.IE.Tests\Chevron.IE.Tests.csproj", "{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.V8", "Nancy.ViewEngines.Chevron.V8\Nancy.ViewEngines.Chevron.V8.csproj", "{91BD5019-F909-44FA-B3BF-67F2763C4BC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.V8", "Chevron.V8\Chevron.V8.csproj", "{E9457395-6FDF-4F69-AF9D-9C32859024F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.V8.Sample", "Nancy.ViewEngines.Chevron.V8.Sample\Nancy.ViewEngines.Chevron.V8.Sample.csproj", "{17B63012-EE2D-4FD2-B4C9-409447390517}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.V8.Tests", "Chevron.V8.Tests\Chevron.V8.Tests.csproj", "{5260557B-150C-4318-8211-BB22BE9642CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Deployable|Any CPU = Deployable|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Deployable|Any CPU.ActiveCfg = Deployable|Any CPU
-		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Deployable|Any CPU.Build.0 = Deployable|Any CPU
 		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Deployable|Any CPU.ActiveCfg = Deployable|Any CPU
-		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Deployable|Any CPU.Build.0 = Deployable|Any CPU
 		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A55C7CAD-B531-43C9-B28D-EE509CF94983}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDB2A524-1865-4637-971A-DF0022844E7A}.Deployable|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDB2A524-1865-4637-971A-DF0022844E7A}.Deployable|Any CPU.Build.0 = Debug|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDB2A524-1865-4637-971A-DF0022844E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Deployable|Any CPU.ActiveCfg = Debug|Any CPU
-		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Deployable|Any CPU.Build.0 = Debug|Any CPU
 		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91BD5019-F909-44FA-B3BF-67F2763C4BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91BD5019-F909-44FA-B3BF-67F2763C4BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91BD5019-F909-44FA-B3BF-67F2763C4BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91BD5019-F909-44FA-B3BF-67F2763C4BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9457395-6FDF-4F69-AF9D-9C32859024F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9457395-6FDF-4F69-AF9D-9C32859024F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9457395-6FDF-4F69-AF9D-9C32859024F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9457395-6FDF-4F69-AF9D-9C32859024F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B63012-EE2D-4FD2-B4C9-409447390517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B63012-EE2D-4FD2-B4C9-409447390517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B63012-EE2D-4FD2-B4C9-409447390517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B63012-EE2D-4FD2-B4C9-409447390517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5260557B-150C-4318-8211-BB22BE9642CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5260557B-150C-4318-8211-BB22BE9642CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5260557B-150C-4318-8211-BB22BE9642CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5260557B-150C-4318-8211-BB22BE9642CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

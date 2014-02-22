@@ -17,7 +17,7 @@
 // <website>https://github.com/facebook-csharp-sdk/simple-json</website>
 //-----------------------------------------------------------------------
 
-// VERSION: 0.30.0
+// VERSION: 0.32.0
 
 // NOTE: uncomment the following line to make SimpleJson class internal.
 //#define SIMPLE_JSON_INTERNAL
@@ -30,6 +30,9 @@
 
 // NOTE: uncomment the following line to enable DataContract support.
 //#define SIMPLE_JSON_DATACONTRACT
+
+// NOTE: uncomment the following line to enable IReadOnlyCollection<T> and IReadOnlyList<T> support.
+//#define SIMPLE_JSON_READONLY_COLLECTIONS
 
 // NOTE: uncomment the following line to disable linq expressions/compiled lambda (better performance) instead of method.invoke().
 // define if you are using .net framework <= 3.0 or < WP7.5
@@ -1646,7 +1649,14 @@ namespace Chevron
 
                 Type genericDefinition = type.GetGenericTypeDefinition();
 
-                return (genericDefinition == typeof(IList<>) || genericDefinition == typeof(ICollection<>) || genericDefinition == typeof(IEnumerable<>));
+                return (genericDefinition == typeof(IList<>)
+                    || genericDefinition == typeof(ICollection<>)
+                    || genericDefinition == typeof(IEnumerable<>)
+#if SIMPLE_JSON_READONLY_COLLECTIONS
+                    || genericDefinition == typeof(IReadOnlyCollection<>)
+                    || genericDefinition == typeof(IReadOnlyList<>)
+#endif
+                    );
             }
 
             public static bool IsAssignableFrom(Type type1, Type type2)

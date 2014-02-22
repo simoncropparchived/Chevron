@@ -3,29 +3,47 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web;
-using MsieJavaScriptEngine;
 using Resourcer;
 
 namespace Chevron
 {
     public class Handlebars : IDisposable
     {
-        MsieJsEngine engine;
+#if (IE)
+        MsieJavaScriptEngine.MsieJsEngine engine;
 
-        List<string> registeredTemplates = new List<string>();
-        List<string> registeredPartials = new List<string>(); 
-        List<string> registeredHelpers = new List<string>(); 
-
-        public Handlebars(MsieJsEngine engine)
+        public Handlebars(MsieJavaScriptEngine.MsieJsEngine engine)
         {
             this.engine = engine;
             var handlebarsJsText = GetHandlebarsJsText();
             engine.Execute(handlebarsJsText);
         }
 
-        public Handlebars():this (new MsieJsEngine(JsEngineMode.Auto))
+        public Handlebars()
+            : this(new MsieJavaScriptEngine.MsieJsEngine(MsieJavaScriptEngine.JsEngineMode.Auto))
         {
         }
+#endif
+#if (V8)
+        Microsoft.ClearScript.V8.V8ScriptEngine engine;
+
+        public Handlebars(Microsoft.ClearScript.V8.V8ScriptEngine engine)
+        {
+            this.engine = engine;
+            var handlebarsJsText = GetHandlebarsJsText();
+            engine.Execute(handlebarsJsText);
+        }
+
+        public Handlebars()
+            : this(new Microsoft.ClearScript.V8.V8ScriptEngine())
+        {
+        }
+#endif
+
+        List<string> registeredTemplates = new List<string>();
+        List<string> registeredPartials = new List<string>(); 
+        List<string> registeredHelpers = new List<string>(); 
+
 
         /// <summary>
         /// Get the content of handlebars.js

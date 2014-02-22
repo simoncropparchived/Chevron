@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9457395-6FDF-4F69-AF9D-9C32859024F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chevron.V8</RootNamespace>
+    <AssemblyName>Chevron.V8</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FodyPath>..\packages\Fody.1.20.0.0</FodyPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;V8,SIMPLE_JSON_DYNAMIC,SIMPLE_JSON_INTERNAL,SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;V8,SIMPLE_JSON_DYNAMIC,SIMPLE_JSON_INTERNAL,SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClearScript">
+      <HintPath>..\packages\ClearScript.V8.5.3.10.0\lib\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="Janitor">
+      <HintPath>..\packages\Janitor.Fody.0.6.0.0\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Janitor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Resourcer">
+      <HintPath>..\packages\Resourcer.Fody.1.1.2.0\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Resourcer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fody.targets" />
+    <None Include="NugetAssets\Chevron.V8.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Chevron.IE\AssemblyLocation.cs">
+      <Link>AssemblyLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\Chevron.IE\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Chevron.IE\Handlebars.cs">
+      <Link>Handlebars.cs</Link>
+    </Compile>
+    <Compile Include="..\Chevron.IE\SimpleJson.cs">
+      <Link>SimpleJson.cs</Link>
+    </Compile>
+    <Compile Include="..\Chevron.IE\ThreadLocalHandlebars.cs">
+      <Link>ThreadLocalHandlebars.cs</Link>
+    </Compile>
+    <Compile Include="..\Chevron.IE\VariableNameValidator.cs">
+      <Link>VariableNameValidator.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Chevron.IE\handlebars.js">
+      <Link>handlebars.js</Link>
+    </EmbeddedResource>
+    <Content Include="FodyWeavers.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.3.10.0\tools\native\x86\*.*" "$(TargetDir)"
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.3.10.0\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="Fody.targets" />
+  <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
+  <PropertyGroup>
+    <TempDir>$(TargetDir)Temp\</TempDir>
+    <NugetsDir>$(SolutionDir)Nugets\</NugetsDir>
+  </PropertyGroup>
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Deployable' ">
+    <ItemGroup>
+      <FilesToDelete Include="$(TempDir)**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <MakeDir Directories="$(TempDir)" />
+    <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).nuspec" DestinationFolder="$(TempDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET40" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET40" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET40" />
+    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
+  </Target>
+</Project>

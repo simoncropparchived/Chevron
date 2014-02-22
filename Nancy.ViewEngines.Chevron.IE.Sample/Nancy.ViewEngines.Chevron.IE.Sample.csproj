@@ -7,8 +7,8 @@
     <ProjectGuid>{FDB2A524-1865-4637-971A-DF0022844E7A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.ViewEngines.Chevron.Sample</RootNamespace>
-    <AssemblyName>Nancy.ViewEngines.Chevron.Sample</AssemblyName>
+    <RootNamespace>Nancy.ViewEngines.Chevron.IE.Sample</RootNamespace>
+    <AssemblyName>Nancy.ViewEngines.Chevron.IE.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -54,17 +54,16 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chevron\Chevron.csproj">
+    <ProjectReference Include="..\Chevron.IE\Chevron.IE.csproj">
       <Project>{5cb5aa52-843c-454a-bd57-a1b40dfb2e22}</Project>
-      <Name>Chevron</Name>
+      <Name>Chevron.IE</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nancy.ViewEngines.Chevron\Nancy.ViewEngines.Chevron.csproj">
+    <ProjectReference Include="..\Nancy.ViewEngines.Chevron.IE\Nancy.ViewEngines.Chevron.IE.csproj">
       <Project>{a55c7cad-b531-43c9-b28d-ee509cf94983}</Project>
-      <Name>Nancy.ViewEngines.Chevron</Name>
+      <Name>Nancy.ViewEngines.Chevron.IE</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

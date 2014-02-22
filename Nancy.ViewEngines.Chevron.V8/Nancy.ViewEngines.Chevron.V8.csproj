@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A55C7CAD-B531-43C9-B28D-EE509CF94983}</ProjectGuid>
+    <ProjectGuid>{91BD5019-F909-44FA-B3BF-67F2763C4BC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.ViewEngines.Chevron</RootNamespace>
-    <AssemblyName>Nancy.ViewEngines.Chevron</AssemblyName>
+    <RootNamespace>Nancy.ViewEngines.Chevron.V8</RootNamespace>
+    <AssemblyName>Nancy.ViewEngines.Chevron.V8</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FodyPath>..\packages\Fody.1.20.0.0</FodyPath>
@@ -29,28 +29,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Nancy.ViewEngines.Chevron.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deployable|AnyCPU'">
-    <OutputPath>bin\Deployable\</OutputPath>
-    <DefineConstants>TRACE;Scalpel</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Deployable\Nancy.ViewEngines.Chevron.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClearScript">
+      <HintPath>..\packages\ClearScript.V8.5.3.10.0\lib\ClearScript.dll</HintPath>
+    </Reference>
     <Reference Include="Janitor">
       <HintPath>..\packages\Janitor.Fody.0.6.0.0\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Janitor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MsieJavaScriptEngine">
-      <HintPath>..\packages\MsieJavaScriptEngine.1.3.0\lib\net40\MsieJavaScriptEngine.dll</HintPath>
-    </Reference>
     <Reference Include="Nancy">
-      <HintPath>..\packages\Nancy.0.22.1\lib\net40\Nancy.dll</HintPath>
+      <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,66 +50,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="ChevronViewEngine.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Fody.targets" />
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.Merged.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.V8.Merged.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.V8.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chevron\Chevron.csproj">
-      <Project>{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}</Project>
-      <Name>Chevron</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="Fody.targets" />
   <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
-
-
   <PropertyGroup>
     <TempDir>$(TargetDir)Temp\</TempDir>
-    <TempMergedDir>$(TargetDir)TempMerged\</TempMergedDir>
     <NugetsDir>$(SolutionDir)Nugets\</NugetsDir>
   </PropertyGroup>
-
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Deployable' ">
-
     <ItemGroup>
       <FilesToDelete Include="$(TempDir)**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(TempDir)" />
-
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).nuspec" DestinationFolder="$(TempDir)" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET40" />
     <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET40" />
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
-
- 
-    <ItemGroup>
-      <FilesToDelete Include="$(TempMergedDir)**\*.*" />
-    </ItemGroup>
-    <Delete Files="@(FilesToDelete)" />
-    <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
-    <Exec Command='"$(SolutionDir)Tools\ilmerge.exe" /out:"$(TempMergedDir)Lib\NET40\$(TargetFileName)" "$(TargetPath)" "$(TargetDir)MsieJavaScriptEngine.dll" "$(TargetDir)Chevron.dll" /target:library /targetplatform:"v4,$(FrameworkPathOverride)"' />
-
-    <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
-    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
-
   </Target>
+  <Import Project="Fody.targets" />
 </Project>

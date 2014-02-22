@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chevron\Chevron.csproj">
+    <ProjectReference Include="..\Chevron.IE\Chevron.IE.csproj">
       <Project>{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}</Project>
-      <Name>Chevron</Name>
+      <Name>Chevron.IE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
