@@ -29,6 +29,7 @@
     <DefineConstants>TRACE;V8,SIMPLE_JSON_DYNAMIC,SIMPLE_JSON_INTERNAL,SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Chevron.V8.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript">
