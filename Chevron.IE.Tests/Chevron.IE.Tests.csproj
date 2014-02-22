@@ -7,8 +7,8 @@
     <ProjectGuid>{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests</RootNamespace>
-    <AssemblyName>Tests</AssemblyName>
+    <RootNamespace>Chevron.IE.Tests</RootNamespace>
+    <AssemblyName>Chevron.IE.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chevron.IE\Chevron.IE.csproj">
-      <Project>{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}</Project>
+      <Project>{5cb5aa52-843c-454a-bd57-a1b40dfb2e22}</Project>
       <Name>Chevron.IE</Name>
     </ProjectReference>
   </ItemGroup>
