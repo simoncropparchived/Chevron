@@ -76,6 +76,7 @@
     <Compile Include="ThreadLocalHandlebars.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fody.targets" />
     <None Include="NugetAssets\Chevron.nuspec" />
     <None Include="NugetAssets\Chevron.Merged.nuspec" />
     <None Include="packages.config">
@@ -89,25 +90,38 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="Fody.targets" />
-  <UsingTask TaskName="PepitaPackage.WeavingTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
+  <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
+  <PropertyGroup>
+    <TempDir>$(TargetDir)Temp\</TempDir>
+    <TempMergedDir>$(TargetDir)TempMerged\</TempMergedDir>
+    <NugetsDir>$(SolutionDir)Nugets\</NugetsDir>
+  </PropertyGroup>
+
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Deployable' ">
+
     <ItemGroup>
-      <FilesToDelete Include="$(SolutionDir)NuGetBuild\**\*.*" />
-      <FilesToDelete Include="$(SolutionDir)NuGetBuild.Merged\**\*.*" />
+      <FilesToDelete Include="$(TempDir)**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
-    <MakeDir Directories="$(SolutionDir)NuGetBuild" />
-    <Copy SourceFiles="$(ProjectDir)NugetAssets\Chevron.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild" />
-    <Copy SourceFiles="$(OutputPath)Chevron.dll" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <Copy SourceFiles="$(OutputPath)Chevron.pdb" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <Copy SourceFiles="$(OutputPath)Chevron.xml" DestinationFolder="$(SolutionDir)NuGetBuild\Lib\NET40" />
-    <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild" MetadataAssembly="$(OutputPath)Chevron.dll" />
-    <MakeDir Directories="$(SolutionDir)NuGetBuild.Merged" />
-    <MakeDir Directories="$(SolutionDir)NuGetBuild.Merged\Lib\NET40" />
-    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(SolutionDir)NuGetBuild.Merged\Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
-    <Copy SourceFiles="$(ProjectDir)NugetAssets\Chevron.Merged.nuspec" DestinationFolder="$(SolutionDir)NuGetBuild.Merged" />
-    <Copy SourceFiles="$(OutputPath)Chevron.pdb" DestinationFolder="$(SolutionDir)NuGetBuild.Merged\Lib\NET40" />
-    <Copy SourceFiles="$(OutputPath)Chevron.xml" DestinationFolder="$(SolutionDir)NuGetBuild.Merged\Lib\NET40" />
-    <PepitaPackage.WeavingTask NuGetBuildDirectory="$(SolutionDir)NuGetBuild.Merged" MetadataAssembly="$(OutputPath)Chevron.dll" />
+    <MakeDir Directories="$(TempDir)" />
+
+    <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).nuspec" DestinationFolder="$(TempDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET40" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET40" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET40" />
+    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
+
+ 
+    <ItemGroup>
+      <FilesToDelete Include="$(TempMergedDir)**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
+    <Exec Command='"$(SolutionDir)Tools\ilmerge.exe" /out:"$(TempMergedDir)Lib\NET40\$(TargetFileName)" "$(TargetPath)" "$(TargetDir)MsieJavaScriptEngine.dll" /target:library /targetplatform:"v4,$(FrameworkPathOverride)"' />
+
+    <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
+    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
+
   </Target>
 </Project>

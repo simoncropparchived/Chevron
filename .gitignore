@@ -75,7 +75,4 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
-NuGetBuildViewEngine.Merged/*
-NuGetBuildViewEngine/*
-NuGetBuild.Merged/*
-NuGetBuild/*
+NuGets/*
