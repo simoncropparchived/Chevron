@@ -109,10 +109,7 @@
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
-    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;"  LogStandardErrorAsError="true" ConsoleToMSBuild="true">
-        <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
-    </Exec>
-       <Message Text="$(OutputOfExec)" />
+    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;"  LogStandardErrorAsError="true" ConsoleToMSBuild="true"/>
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
