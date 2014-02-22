@@ -58,6 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Chevron.IE\AssemblyLocation.cs">
       <Link>AssemblyLocation.cs</Link>
     </Compile>
