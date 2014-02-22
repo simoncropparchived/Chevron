@@ -93,7 +93,7 @@
     <TempMergedDir>$(TargetDir)TempMerged\</TempMergedDir>
     <NugetsDir>$(SolutionDir)Nugets\</NugetsDir>
   </PropertyGroup>
-  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Deployable' ">
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
     <ItemGroup>
       <FilesToDelete Include="$(TempDir)**\*.*" />
     </ItemGroup>
