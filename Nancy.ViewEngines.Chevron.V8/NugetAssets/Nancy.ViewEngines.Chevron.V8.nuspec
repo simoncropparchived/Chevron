@@ -16,7 +16,7 @@
     <dependencies>
       <dependency id="Nancy"/>
       <dependency id="Chevron.V8"/>
-      <dependency id="ClearScrip.V8"/>
+      <dependency id="ClearScript.V8"/>
     </dependencies>
   </metadata>
 </package>

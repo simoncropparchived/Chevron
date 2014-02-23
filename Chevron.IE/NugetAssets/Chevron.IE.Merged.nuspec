@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Chevron.Merged.IE</id>
+    <id>Chevron.IE.Merged</id>
     <version>$version$</version>
-    <title>Chevron.Merged.IE</title>
+    <title>Chevron.IE.Merged</title>
     <authors>Simon Cropp</authors>
     <owners>Simon Cropp</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
