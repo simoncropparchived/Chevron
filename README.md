@@ -4,17 +4,29 @@ Wraps [HandlebarsJS](http://handlebarsjs.com/) to make it usable from .net.
 
 ## Nuget
 
-### Core
+#### [Chevron.IE](http://nuget.org/packages/Chevron.IE) 
 
-Nuget package http://nuget.org/packages/Chevron 
+Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) package. 
 
-    PM> Install-Package Chevron
+#### [Chevron.IE.Merged](http://nuget.org/packages/Chevron.IE.Merged) 
 
-### NancyFX integration
+ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) assembly to avoid an extra dependency 
 
-Nuget package http://nuget.org/packages/Nancy.ViewEngines.Chevron
+#### [Chevron.V8](http://nuget.org/packages/Chevron.V8) 
 
-    PM> Install-Package Nancy.ViewEngines.Chevron
+Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) package. 
+
+#### [Nancy.ViewEngines.Chevron.IE](http://nuget.org/packages/Nancy.ViewEngines.Chevron.IE) 
+
+Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE packages. 
+
+#### [Nancy.ViewEngines.Chevron.IE.Merged](http://nuget.org/packages/Nancy.ViewEngines.Chevron.IE.Merged) 
+
+ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE assembly to avoid an any extra dependencies. 
+
+#### [Nancy.ViewEngines.Chevron.V8](http://nuget.org/packages/Nancy.ViewEngines.Chevron.V8) 
+
+Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) and Chevron.V8 packages. 
 
 ## Usage
 
@@ -137,10 +149,6 @@ The current version included in the library is v1.3.0. If you feel a newer versi
 ### Running a custom version
 
 If you want to run a custom version of HandlebaseJS simply place the custom `handlebars.js` in the current running directory and that file will be used instead of the merged version. 
-
-## MSIE JavaScript Engine for .NET
-
-The project uses the [MSIE JavaScript Engine](https://github.com/Taritsyn/MsieJavaScriptEngine/). It also gives credit to various other libraries for its' inspiration [MSIE JavaScript Engine Credits](https://github.com/Taritsyn/MsieJavaScriptEngine#credits). Also see the [License](http://github.com/Taritsyn/MsieJavaScriptEngine/blob/master/LICENSE.md).
 
 ## Icon 
 
