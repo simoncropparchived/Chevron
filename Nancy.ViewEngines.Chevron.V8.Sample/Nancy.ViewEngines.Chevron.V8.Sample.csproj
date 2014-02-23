@@ -59,10 +59,6 @@
       <Project>{91bd5019-f909-44fa-b3bf-67f2763c4bc1}</Project>
       <Name>Nancy.ViewEngines.Chevron.V8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nancy.ViewEngines.Chevron.IE\Nancy.ViewEngines.Chevron.IE.csproj">
-      <Project>{a55c7cad-b531-43c9-b28d-ee509cf94983}</Project>
-      <Name>Nancy.ViewEngines.Chevron.IE</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Nancy.ViewEngines.Chevron.IE.Sample\MainModule.cs">

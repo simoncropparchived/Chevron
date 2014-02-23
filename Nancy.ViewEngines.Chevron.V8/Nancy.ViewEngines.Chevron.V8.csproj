@@ -67,6 +67,15 @@
     <Compile Include="..\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Nancy.ViewEngines.Chevron.IE\ChevronViewEngine.cs">
+      <Link>ChevronViewEngine.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chevron.V8\Chevron.V8.csproj">
+      <Project>{e9457395-6fdf-4f69-af9d-9c32859024f2}</Project>
+      <Name>Chevron.V8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
