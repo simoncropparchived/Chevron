@@ -52,6 +52,9 @@
     <None Include="..\Nancy.ViewEngines.Chevron.IE.Sample\Views\Index.handlebars">
       <Link>Views\Index.handlebars</Link>
     </None>
+    <None Include="..\Nancy.ViewEngines.Chevron.IE.Sample\Views\_MyPartial.handlebars">
+      <Link>Views\_MyPartial.handlebars</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -68,6 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Views\_MyPartial.handlebars">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Views\Index.handlebars">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

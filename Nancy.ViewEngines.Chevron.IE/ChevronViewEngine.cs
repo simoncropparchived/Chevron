@@ -55,8 +55,9 @@ namespace Nancy.ViewEngines.Chevron
                 Contents = stream =>
                 {
                     var templateName = viewLocationResult.Name;
-                    
-                    threadLocalHandlebars.Value.RegisterTemplate(templateName, () =>
+
+                    var handlebars = threadLocalHandlebars.Value;
+                    handlebars.RegisterTemplate(templateName, () =>
                     {
                         using (var textReader = viewLocationResult.Contents())
                         {
@@ -66,7 +67,8 @@ namespace Nancy.ViewEngines.Chevron
                     });
                     foreach (var partial in viewLocator.GetAllCurrentlyDiscoveredViews().Where(x => x.Name.StartsWith("_")))
                     {
-                        threadLocalHandlebars.Value.RegisterPartial(partial.Name, () =>
+                        var partialName = partial.Name.TrimStart('_');
+                        handlebars.RegisterPartial(partialName, () =>
                         {
                             using (var textReader = partial.Contents())
                             {
@@ -76,7 +78,21 @@ namespace Nancy.ViewEngines.Chevron
                     }
                     using (var writer = new StreamWriter(stream))
                     {
-                        var output = threadLocalHandlebars.Value.Transform(templateName, model);
+                        dynamic output;
+                        try
+                        {
+                            output = handlebars.Transform(templateName, model);
+                        }
+                        catch (Exception)
+                        {
+                            //TODO: remove this exception handling after a few versions
+                            var templateContents = viewLocationResult.Contents().ReadToEnd();
+                            if (templateContents.Contains("{{> _") || templateContents.Contains("{{>_"))
+                            {
+                                throw new Exception(string.Format("Template '{0}' contains and underscore prefixed partial name. This is no longer required. Search for the string '{{>_' or '{{> _' in your template and remove the '_'.", templateName));
+                            }
+                            throw;
+                        }
                         writer.Write(output);
                     }
                 }

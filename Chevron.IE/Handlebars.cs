@@ -7,6 +7,7 @@ using Resourcer;
 
 namespace Chevron
 {
+
     public class Handlebars : IDisposable
     {
 #if (IE)
