@@ -130,7 +130,7 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
             while ((line = stringReader.ReadLine()) != null)
             {
                 var trim = line.Trim();
-                if (trim.StartsWith("{{") && trim.EndsWith("}}"))
+                if (IsHelper(trim))
                 {
                     stringBuilder.Append(trim);
                     continue;
@@ -138,6 +138,11 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
                 stringBuilder.AppendLine(line);
             }
             return HttpUtility.JavaScriptStringEncode(stringBuilder.ToString());
+        }
+
+        static bool IsHelper(string trim)
+        {
+            return (trim.StartsWith("{{#") || trim.StartsWith("{{/")) && trim.EndsWith("}}");
         }
 
         public void RegisterPartial(string partialName, string content)
