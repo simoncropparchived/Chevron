@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.IE", "Chevron.IE\Chevron.IE.csproj", "{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.IE", "Nancy.ViewEngines.Chevron.IE\Nancy.ViewEngines.Chevron.IE.csproj", "{A55C7CAD-B531-43C9-B28D-EE509CF94983}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.IE", "Nancy.ViewEngines.HandleBars.IE\Nancy.ViewEngines.Handlebars.IE.csproj", "{A55C7CAD-B531-43C9-B28D-EE509CF94983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.IE.Sample", "Nancy.ViewEngines.Chevron.IE.Sample\Nancy.ViewEngines.Chevron.IE.Sample.csproj", "{FDB2A524-1865-4637-971A-DF0022844E7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.IE.Sample", "Nancy.ViewEngines.HandleBars.IE.Sample\Nancy.ViewEngines.Handlebars.IE.Sample.csproj", "{FDB2A524-1865-4637-971A-DF0022844E7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.IE.Tests", "Chevron.IE.Tests\Chevron.IE.Tests.csproj", "{9AF7B1C7-1DF6-43CE-AE0B-66F0153A5D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.V8", "Nancy.ViewEngines.Chevron.V8\Nancy.ViewEngines.Chevron.V8.csproj", "{91BD5019-F909-44FA-B3BF-67F2763C4BC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.V8", "Nancy.ViewEngines.HandleBars.V8\Nancy.ViewEngines.Handlebars.V8.csproj", "{91BD5019-F909-44FA-B3BF-67F2763C4BC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.V8", "Chevron.V8\Chevron.V8.csproj", "{E9457395-6FDF-4F69-AF9D-9C32859024F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Chevron.V8.Sample", "Nancy.ViewEngines.Chevron.V8.Sample\Nancy.ViewEngines.Chevron.V8.Sample.csproj", "{17B63012-EE2D-4FD2-B4C9-409447390517}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.V8.Sample", "Nancy.ViewEngines.HandleBars.V8.Sample\Nancy.ViewEngines.Handlebars.V8.Sample.csproj", "{17B63012-EE2D-4FD2-B4C9-409447390517}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.V8.Tests", "Chevron.V8.Tests\Chevron.V8.Tests.csproj", "{5260557B-150C-4318-8211-BB22BE9642CA}"
 EndProject

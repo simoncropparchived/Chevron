@@ -1,5 +1,5 @@
 using Nancy;
-using Nancy.ViewEngines.Chevron;
+using Nancy.ViewEngines.Handlebars;
 
 public class MainModule : NancyModule
 {

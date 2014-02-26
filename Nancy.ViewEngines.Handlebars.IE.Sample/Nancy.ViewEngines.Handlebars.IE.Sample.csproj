@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{17B63012-EE2D-4FD2-B4C9-409447390517}</ProjectGuid>
+    <ProjectGuid>{FDB2A524-1865-4637-971A-DF0022844E7A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.ViewEngines.Chevron.V8.Sample</RootNamespace>
-    <AssemblyName>Nancy.ViewEngines.Chevron.V8.Sample</AssemblyName>
+    <RootNamespace>Nancy.ViewEngines.Handlebars.IE.Sample</RootNamespace>
+    <AssemblyName>Nancy.ViewEngines.Handlebars.IE.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,6 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,11 +32,16 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Nancy">
+    <Reference Include="Nancy, Version=0.22.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Hosting.Self">
+    <Reference Include="Nancy.Hosting.Self, Version=0.22.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Hosting.Self.0.22.2\lib\net40\Nancy.Hosting.Self.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -49,27 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Nancy.ViewEngines.Chevron.IE.Sample\Views\Index.handlebars">
-      <Link>Views\Index.handlebars</Link>
-    </None>
-    <None Include="..\Nancy.ViewEngines.Chevron.IE.Sample\Views\_MyPartial.handlebars">
-      <Link>Views\_MyPartial.handlebars</Link>
-    </None>
+    <Compile Include="MainModule.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nancy.ViewEngines.Chevron.V8\Nancy.ViewEngines.Chevron.V8.csproj">
-      <Project>{91bd5019-f909-44fa-b3bf-67f2763c4bc1}</Project>
-      <Name>Nancy.ViewEngines.Chevron.V8</Name>
+    <ProjectReference Include="..\Chevron.IE\Chevron.IE.csproj">
+      <Project>{5cb5aa52-843c-454a-bd57-a1b40dfb2e22}</Project>
+      <Name>Chevron.IE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nancy.ViewEngines.HandleBars.IE\Nancy.ViewEngines.Handlebars.IE.csproj">
+      <Project>{a55c7cad-b531-43c9-b28d-ee509cf94983}</Project>
+      <Name>Nancy.ViewEngines.Handlebars.IE</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Nancy.ViewEngines.Chevron.IE.Sample\MainModule.cs">
-      <Link>MainModule.cs</Link>
-    </Compile>
-    <Compile Include="..\Nancy.ViewEngines.Chevron.IE.Sample\Program.cs">
-      <Link>Program.cs</Link>
-    </Compile>
+    <None Include="Views\_MyPartial.handlebars">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Views\Index.handlebars">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

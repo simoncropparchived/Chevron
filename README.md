@@ -16,15 +16,15 @@ ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScript
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) package. 
 
-#### [Nancy.ViewEngines.Chevron.IE](http://nuget.org/packages/Nancy.ViewEngines.Chevron.IE) 
+#### [Nancy.ViewEngines.Handlebars.IE](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE) 
 
 Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE packages. 
 
-#### [Nancy.ViewEngines.Chevron.IE.Merged](http://nuget.org/packages/Nancy.ViewEngines.Chevron.IE.Merged) 
+#### [Nancy.ViewEngines.Handlebars.IE.Merged](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE.Merged) 
 
 ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE assembly to avoid an any extra dependencies. 
 
-#### [Nancy.ViewEngines.Chevron.V8](http://nuget.org/packages/Nancy.ViewEngines.Chevron.V8) 
+#### [Nancy.ViewEngines.Handlebars.V8](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.V8) 
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) and Chevron.V8 packages. 
 

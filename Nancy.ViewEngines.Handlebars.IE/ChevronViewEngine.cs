@@ -5,7 +5,7 @@ using System.Linq;
 using Chevron;
 using Nancy.Responses;
 
-namespace Nancy.ViewEngines.Chevron
+namespace Nancy.ViewEngines.Handlebars
 {
     /// <summary>
     /// View engine for rendering mustache views.

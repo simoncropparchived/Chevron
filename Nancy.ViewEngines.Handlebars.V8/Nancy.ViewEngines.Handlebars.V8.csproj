@@ -7,8 +7,8 @@
     <ProjectGuid>{91BD5019-F909-44FA-B3BF-67F2763C4BC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.ViewEngines.Chevron.V8</RootNamespace>
-    <AssemblyName>Nancy.ViewEngines.Chevron.V8</AssemblyName>
+    <RootNamespace>Nancy.ViewEngines.Handlebars.V8</RootNamespace>
+    <AssemblyName>Nancy.ViewEngines.Handlebars.V8</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FodyPath>..\packages\Fody.1.20.0.0</FodyPath>
@@ -29,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Nancy.ViewEngines.Chevron.V8.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Nancy.ViewEngines.Handlebars.V8.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript">
@@ -52,10 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fody.targets" />
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.V8.Merged.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Handlebars.V8.Merged.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.V8.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Handlebars.V8.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -67,7 +67,7 @@
     <Compile Include="..\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Nancy.ViewEngines.Chevron.IE\ChevronViewEngine.cs">
+    <Compile Include="..\Nancy.ViewEngines.Handlebars.IE\ChevronViewEngine.cs">
       <Link>ChevronViewEngine.cs</Link>
     </Compile>
   </ItemGroup>

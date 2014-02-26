@@ -7,8 +7,8 @@
     <ProjectGuid>{A55C7CAD-B531-43C9-B28D-EE509CF94983}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nancy.ViewEngines.Chevron.IE</RootNamespace>
-    <AssemblyName>Nancy.ViewEngines.Chevron.IE</AssemblyName>
+    <RootNamespace>Nancy.ViewEngines.Handlebars.IE</RootNamespace>
+    <AssemblyName>Nancy.ViewEngines.Handlebars.IE</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FodyPath>..\packages\Fody.1.20.0.0</FodyPath>
@@ -29,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Nancy.ViewEngines.Chevron.IE.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Nancy.ViewEngines.Handlebars.IE.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deployable|AnyCPU'">
     <OutputPath>bin\Deployable\</OutputPath>
@@ -39,7 +39,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Deployable\Nancy.ViewEngines.Chevron.IE.xml</DocumentationFile>
+    <DocumentationFile>bin\Deployable\Nancy.ViewEngines.Handlebars.IE.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Janitor">
@@ -49,8 +49,9 @@
     <Reference Include="MsieJavaScriptEngine">
       <HintPath>..\packages\MsieJavaScriptEngine.1.3.0\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy">
-      <HintPath>..\packages\Nancy.0.22.1\lib\net40\Nancy.dll</HintPath>
+    <Reference Include="Nancy, Version=0.22.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,10 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fody.targets" />
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.IE.Merged.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Handlebars.IE.Merged.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="NugetAssets\Nancy.ViewEngines.Chevron.IE.nuspec">
+    <None Include="NugetAssets\Nancy.ViewEngines.Handlebars.IE.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -109,7 +110,7 @@
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
-    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;"  LogStandardErrorAsError="true" ConsoleToMSBuild="true"/>
+    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
