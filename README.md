@@ -34,7 +34,7 @@ Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScri
 
 #### Performance
 
-In my basic testing V8 was (in most cases) faster than IE. Note that this testing was done on the IE 10 engine and the IE 11 engine is rumoured to have significant performance improvements.
+In my basic testing V8 was (in most cases) faster than IE. Note that this testing was done on the IE 10 engine and the IE 11 engine is rumored to have significant performance improvements.
 
 #### Consistency
 
@@ -46,7 +46,7 @@ V8 will, in theory, run on a non windows platform (I have not done any testing o
 
 #### Packaging and deployment
 
-V8 is a native dll, to the nuget package needs to tweak your project file to manually copy it tot he output directory. While this generally works it is is more moving pieces and not seamless when upgrading packages or when double hop references are used. IE is a single .net dll and is manages as such
+V8 is a native dll, to the nuget package needs to tweak your project file to manually copy it to the output directory. While this generally works it is is more moving pieces and not seamless when upgrading packages or when double hop references are used. IE is a single .net dll and is managed as such
 
 #### Size
 
