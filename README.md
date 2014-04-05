@@ -28,6 +28,34 @@ ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScript
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) and Chevron.V8 packages. 
 
+## What Nuget to choose
+
+### IE or V8
+
+#### Performance
+
+In my basic testing V8 was (in most cases) faster than IE. Note that this testing was done on the IE 10 engine and the IE 11 engine is rumoured to have significant performance improvements.
+
+#### Consistency
+
+When using the V8 engine you can control the specific version that is used. When using the IE engine the specific version of the engine can vary with windows updates. 
+
+#### Portability
+
+V8 will, in theory, run on a non windows platform (I have not done any testing of this). IE is tied to Windows.
+
+#### Packaging and deployment
+
+V8 is a native dll, to the nuget package needs to tweak your project file to manually copy it tot he output directory. While this generally works it is is more moving pieces and not seamless when upgrading packages or when double hop references are used. IE is a single .net dll and is manages as such
+
+#### Size
+
+IE is significantly smaller than V8
+
+### Merged IE or Non-Merged IE
+
+If you only want to render simple files then use the merged version. If you want full control over the JS engine (eg to load custom scripts) then use the non-merged version.
+
 ## Usage
 
 ### Rendering a template
