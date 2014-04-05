@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web;
+using Chevron.IE;
 using Resourcer;
 
 namespace Chevron

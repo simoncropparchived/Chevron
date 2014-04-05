@@ -115,7 +115,7 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
                 },
                 new
                 {
-                    name = "Yehuda",
+                    name = "John",
                     id = 2
                 }
             }

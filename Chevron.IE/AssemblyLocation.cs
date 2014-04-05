@@ -5,17 +5,15 @@ namespace Chevron
 {
     static class AssemblyLocation
     {
-        public static string CurrentDirectory
+        static AssemblyLocation()
         {
-            get
-            {
-                
-                //Use codebase because location fails for unit tests.
-                var assembly = typeof (AssemblyLocation).Assembly;
-                var uri = new UriBuilder(assembly.CodeBase);
-                var currentAssemblyPath = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(currentAssemblyPath);
-            }
+            //Use codebase because location fails for unit tests.
+            var assembly = typeof(AssemblyLocation).Assembly;
+            var uri = new UriBuilder(assembly.CodeBase);
+            var currentAssemblyPath = Uri.UnescapeDataString(uri.Path);
+            CurrentDirectory = Path.GetDirectoryName(currentAssemblyPath);
         }
+
+        public static string CurrentDirectory;
     }
 }

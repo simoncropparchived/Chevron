@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Chevron;
 using Nancy.Responses;
 
 namespace Nancy.ViewEngines.Handlebars
@@ -12,15 +13,14 @@ namespace Nancy.ViewEngines.Handlebars
     public class ChevronViewEngine : IViewEngine, IDisposable
     {
         IViewLocator viewLocator;
-        Chevron.Handlebars handlebars;
+        ThreadLocalHandlebars threadLocalHandlebars;
 
-        public ChevronViewEngine(Chevron.Handlebars handlebars)
+        public ChevronViewEngine(ThreadLocalHandlebars threadLocalHandlebars)
         {
-            this.handlebars = handlebars;
+            this.threadLocalHandlebars = threadLocalHandlebars;
         }
 
-        public ChevronViewEngine()
-            : this(new Chevron.Handlebars())
+        public ChevronViewEngine():this(new ThreadLocalHandlebars())
         {
         }
 
@@ -56,6 +56,7 @@ namespace Nancy.ViewEngines.Handlebars
                 {
                     var templateName = viewLocationResult.Name;
 
+                    var handlebars = threadLocalHandlebars.Value;
                     handlebars.RegisterTemplate(templateName, () =>
                     {
                         using (var textReader = viewLocationResult.Contents())
