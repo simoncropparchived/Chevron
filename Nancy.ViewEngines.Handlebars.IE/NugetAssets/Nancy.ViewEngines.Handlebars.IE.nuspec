@@ -15,8 +15,8 @@
     <tags>handlebars.js, Chevron, handlebars, nancyfx</tags>
     <dependencies>
       <dependency id="Nancy"/>
-      <dependency id="Chevron.IE" version="0.4.0"/>
-      <dependency id="MsieJavaScriptEngine" version="1.4.2"/>
+      <dependency id="Chevron.IE"/>
+      <dependency id="MsieJavaScriptEngine" version="1.4.3"/>
     </dependencies>
   </metadata>
 </package>

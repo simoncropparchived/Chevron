@@ -1,3 +1,9 @@
+// ReSharper disable IdentifierTypo
+// ReSharper disable ConvertClosureToMethodGroup
+// ReSharper disable ConvertToLambdaExpression
+// ReSharper disable RedundantNameQualifier
+// ReSharper disable RedundantIfElseBlock
+// ReSharper disable SuggestUseVarKeywordEverywhere
 //-----------------------------------------------------------------------
 // <copyright file="SimpleJson.cs" company="The Outercurve Foundation">
 //    Copyright (c) 2011, The Outercurve Foundation.
@@ -1269,6 +1275,7 @@ namespace Chevron.IE
         {
             return clrPropertyName;
         }
+
 
         internal virtual ReflectionUtils.ConstructorDelegate ContructorDelegateFactory(Type key)
         {
