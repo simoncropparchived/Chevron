@@ -66,10 +66,11 @@ namespace Nancy.ViewEngines.Handlebars
                     });
                     foreach (var partial in viewLocator.GetAllCurrentlyDiscoveredViews().Where(x => x.Name.StartsWith("_")))
                     {
-                        var partialName = partial.Name.TrimStart('_');
+                        var localPartial = partial;
+                        var partialName = localPartial.Name.TrimStart('_');
                         handlebars.RegisterPartial(partialName, () =>
                         {
-                            using (var textReader = partial.Contents())
+                            using (var textReader = localPartial.Contents())
                             {
                                 return textReader.ReadToEnd();
                             }
