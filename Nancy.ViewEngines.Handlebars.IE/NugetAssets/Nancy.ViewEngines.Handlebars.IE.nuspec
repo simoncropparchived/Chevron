@@ -16,7 +16,6 @@
     <dependencies>
       <dependency id="Nancy"/>
       <dependency id="Chevron.IE"/>
-      <dependency id="MsieJavaScriptEngine" version="1.4.3"/>
     </dependencies>
   </metadata>
 </package>
