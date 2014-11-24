@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NugetAssets\Chevron.Jint.Merged.nuspec" />
     <None Include="NugetAssets\Chevron.Jint.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -87,16 +88,10 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.3.10.0\tools\native\x86\*.*" "$(TargetDir)"
-if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.3.10.0\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
-  </PropertyGroup>
   <UsingTask TaskName="PepitaPackage.CreatePackageTask" AssemblyFile="$(SolutionDir)Tools\PepitaPackage.dll" />
   <PropertyGroup>
     <TempDir>$(TargetDir)Temp\</TempDir>
+    <TempMergedDir>$(TargetDir)TempMerged\</TempMergedDir>
     <NugetsDir>$(SolutionDir)Nugets\</NugetsDir>
   </PropertyGroup>
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release' ">
@@ -110,6 +105,15 @@ xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.3.10.0\tools\native\amd64\*
     <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET40" />
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
+    <ItemGroup>
+      <FilesToDelete Include="$(TempMergedDir)**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
+    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)Jint.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
+    <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
+    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
   </Target>
   <Import Project="..\packages\Fody.1.25.0\build\Fody.targets" Condition="Exists('..\packages\Fody.1.25.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
