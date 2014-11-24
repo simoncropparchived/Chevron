@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web;
-using Chevron.IE;
 using Resourcer;
 
 namespace Chevron
@@ -23,6 +22,21 @@ namespace Chevron
 
         public Handlebars()
             : this(new MsieJavaScriptEngine.MsieJsEngine(MsieJavaScriptEngine.JsEngineMode.Auto))
+        {
+        }
+#endif
+#if (Jint)
+        Jint.Engine engine;
+
+        public Handlebars(Jint.Engine engine)
+        {
+            this.engine = engine;
+            var handlebarsJsText = GetHandlebarsJsText();
+            engine.Execute(handlebarsJsText);
+        }
+
+        public Handlebars()
+            : this(new Jint.Engine())
         {
         }
 #endif
@@ -76,10 +90,26 @@ namespace Chevron
             }
         }
 
+
+#if(Jint)
+
+        public string Transform(string templateName, object context)
+        {
+            return TransformStringContext(templateName,  context);
+        }
+        public string TransformStringContext(string templateName, object o)
+        {
+            templateName = templateName.ToLowerInvariant();
+
+            CheckTemplate(templateName);
+            return engine.Invoke("chevronTemplate_" + templateName, o).AsString();
+        }
+#else
+        
         public string Transform(string templateName, object context)
         {
             var serializeObject = SerializeObject(context);
-            return TransformStringContext(templateName, serializeObject);
+            return TransformStringContext(templateName, serializeObject, context);
         }
 
         public string SerializeObject(object context)
@@ -88,19 +118,25 @@ namespace Chevron
             {
                 return "{}";
             }
-            return SimpleJson.SerializeObject(context);
+            return IE.SimpleJson.SerializeObject(context);
         }
 
-        public string TransformStringContext(string templateName, string context)
+        public string TransformStringContext(string templateName, string context, object o)
         {
             templateName = templateName.ToLowerInvariant();
 
+            CheckTemplate(templateName);
+            var expression = string.Format("chevronTemplate_{0}({1});", templateName, context);
+            return (string)engine.Evaluate(expression);
+        }
+
+#endif
+        void CheckTemplate(string templateName)
+        {
             if (!registeredTemplates.Contains(templateName))
             {
                 throw new Exception(string.Format("Could not find a template named '{0}'.", templateName));
             }
-            var expression = string.Format("chevronTemplate_{0}({1});", templateName, context);
-            return (string) engine.Evaluate(expression);
         }
 
         public void RegisterTemplate(string name, string source)
