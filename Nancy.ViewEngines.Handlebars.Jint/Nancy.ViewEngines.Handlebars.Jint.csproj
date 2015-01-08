@@ -11,7 +11,7 @@
     <AssemblyName>Nancy.ViewEngines.Handlebars.Jint</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>483fa927</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>287326e5</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,11 +105,11 @@
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
   </Target>
-  <Import Project="..\packages\Fody.1.26.2\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.2\build\Fody.targets')" />
+  <Import Project="..\packages\Fody.1.26.4\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.4\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.1.26.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.26.2\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.1.26.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.26.4\build\Fody.targets'))" />
   </Target>
 </Project>

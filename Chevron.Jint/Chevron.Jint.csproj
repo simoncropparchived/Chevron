@@ -11,7 +11,7 @@
     <AssemblyName>Chevron.Jint</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>0417900c</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>9f3644aa</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,7 +40,7 @@
       <HintPath>..\packages\Jint.2.4.0\lib\portable-net40+sl50+win+wpa81+wp80\Jint.dll</HintPath>
     </Reference>
     <Reference Include="Resourcer">
-      <HintPath>..\packages\Resourcer.Fody.1.2.0.0\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Resourcer.dll</HintPath>
+      <HintPath>..\packages\Resourcer.Fody.1.2.1.0\Lib\portable-net4+sl4+wp7+win8+MonoAndroid16+MonoTouch40\Resourcer.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NugetAssets\Chevron.Jint.Merged.nuspec" />
-    <None Include="NugetAssets\Chevron.Jint.nuspec" />
+    <None Include="NugetAssets\Chevron.Jint.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -115,11 +117,11 @@
     <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
   </Target>
-  <Import Project="..\packages\Fody.1.26.2\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.2\build\Fody.targets')" />
+  <Import Project="..\packages\Fody.1.26.4\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.4\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.1.26.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.26.2\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.1.26.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.26.4\build\Fody.targets'))" />
   </Target>
 </Project>
