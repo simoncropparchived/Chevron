@@ -11,7 +11,7 @@
     <AssemblyName>Chevron.IE</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile/>
+    <TargetFrameworkProfile />
     <NuGetPackageImportStamp>c0d7d016</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

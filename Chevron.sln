@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.IE", "Chevron.IE\Chevron.IE.csproj", "{5CB5AA52-843C-454A-BD57-A1B40DFB2E22}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.Jint", "Nancy.ViewEngines.Handlebars.Jint\Nancy.ViewEngines.Handlebars.Jint.csproj", "{4B3C8EBC-5D88-4184-A87E-1F538FE79FFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.ViewEngines.Handlebars.Jint.Sample", "Nancy.ViewEngines.Handlebars.Jint.Sample\Nancy.ViewEngines.Handlebars.Jint.Sample.csproj", "{A6377C64-1394-4A89-9511-821433B037A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.Mvc.V8", "Chevron.Mvc.V8\Chevron.Mvc.V8.csproj", "{50D06153-09DF-460C-9532-8EACCD40FE22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chevron.Mvc.V8.Sample", "Chevron.Mvc.V8.Sample\Chevron.Mvc.V8.Sample.csproj", "{2068CA80-73A7-43B9-8DBF-464AFD3797CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{A6377C64-1394-4A89-9511-821433B037A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6377C64-1394-4A89-9511-821433B037A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6377C64-1394-4A89-9511-821433B037A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D06153-09DF-460C-9532-8EACCD40FE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D06153-09DF-460C-9532-8EACCD40FE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D06153-09DF-460C-9532-8EACCD40FE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D06153-09DF-460C-9532-8EACCD40FE22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2068CA80-73A7-43B9-8DBF-464AFD3797CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2068CA80-73A7-43B9-8DBF-464AFD3797CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2068CA80-73A7-43B9-8DBF-464AFD3797CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2068CA80-73A7-43B9-8DBF-464AFD3797CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,7 +29,7 @@
         {
             var handlebars = this.threadLocalHandlebars.Value;
             var path = this.controllerContext.HttpContext.Server.MapPath("~/Templates/");
-            Directory.GetFiles(path, "*.hbs", SearchOption.AllDirectories).ToList().ForEach(
+            Directory.GetFiles(path, "*.handlebars", SearchOption.AllDirectories).ToList().ForEach(
                 (file) =>
                     {
                         var name = file.Replace(path, "");
@@ -38,7 +38,7 @@
                         handlebars.RegisterTemplate(name.Replace("\\", "_").Replace("-", "_").Replace(".", "_"), () => File.ReadAllText(file));
                     });
 
-            handlebars.Execute(File.ReadAllText(this.controllerContext.HttpContext.Server.MapPath("~/Templates/underscore.js")));
+            //handlebars.Execute(File.ReadAllText(this.controllerContext.HttpContext.Server.MapPath("~/Templates/underscore.js")));
 
             var output = handlebars.Transform(viewName, viewContext.ViewData.Model);
             writer.Write(output);
