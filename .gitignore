@@ -76,3 +76,6 @@ Thumbs.db
 Desktop.ini
 
 NuGets/*
+
+*.sln.ide
+*.dll
