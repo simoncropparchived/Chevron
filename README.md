@@ -4,27 +4,27 @@ Wraps [HandlebarsJS](http://handlebarsjs.com/) to make it usable from .net.
 
 ## Nuget
 
-#### [Chevron.IE](http://nuget.org/packages/Chevron.IE) 
+#### [Chevron.IE](http://nuget.org/packages/Chevron.IE)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.IE.svg?style=flat)](https://www.nuget.org/packages/Chevron.IE/)
 
 Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) package. 
 
-#### [Chevron.IE.Merged](http://nuget.org/packages/Chevron.IE.Merged) 
+#### [Chevron.IE.Merged](http://nuget.org/packages/Chevron.IE.Merged)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.IE.Merged.svg?style=flat)](https://www.nuget.org/packages/Chevron.IE.Merged/)
 
 ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) assembly to avoid an extra dependency 
 
-#### [Chevron.V8](http://nuget.org/packages/Chevron.V8) 
+#### [Chevron.V8](http://nuget.org/packages/Chevron.V8)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.V8.svg?style=flat)](https://www.nuget.org/packages/Chevron.V8/)
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) package. 
 
-#### [Nancy.ViewEngines.Handlebars.IE](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE) 
+#### [Nancy.ViewEngines.Handlebars.IE](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.IE.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.IE/)
 
 Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE packages. 
 
-#### [Nancy.ViewEngines.Handlebars.IE.Merged](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE.Merged) 
+#### [Nancy.ViewEngines.Handlebars.IE.Merged](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.IE.Merged)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.IE.Merged.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.IE.Merged/)
 
 ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE assembly to avoid an any extra dependencies. 
 
-#### [Nancy.ViewEngines.Handlebars.V8](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.V8) 
+#### [Nancy.ViewEngines.Handlebars.V8](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.V8)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.V8.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.V8/)
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) and Chevron.V8 packages. 
 
