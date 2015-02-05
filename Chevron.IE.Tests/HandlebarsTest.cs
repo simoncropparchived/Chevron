@@ -52,7 +52,7 @@ public class HandlebarsTest
     [Test]
     public void RegisterHelperSample()
     {
-        var helperjs =
+        var helperJs =
             @"function() {
 return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
 }";
@@ -75,7 +75,7 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
         };
         using (var handleBars = new Handlebars())
         {
-            handleBars.RegisterHelper("link_to", helperjs);
+            handleBars.RegisterHelper("link_to", helperJs);
             handleBars.RegisterTemplate("myTemplate", source);
             Approvals.Verify(handleBars.Transform("myTemplate", context));
         }
