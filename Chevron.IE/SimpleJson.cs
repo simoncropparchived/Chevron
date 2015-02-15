@@ -74,6 +74,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using Chevron.IE.Reflection;
+// ReSharper disable JoinDeclarationAndInitializer
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
