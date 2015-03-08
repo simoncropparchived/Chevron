@@ -704,18 +704,6 @@ var __module1__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 
   var Handlebars = create();
   Handlebars.create = create;
-
-  /*jshint -W040 */
-  /* istanbul ignore next */
-  var root = typeof global !== 'undefined' ? global : window,
-      $Handlebars = root.Handlebars;
-  /* istanbul ignore next */
-  Handlebars.noConflict = function() {
-    if (root.Handlebars === Handlebars) {
-      root.Handlebars = $Handlebars;
-    }
-  };
-
   Handlebars['default'] = Handlebars;
 
   __exports__ = Handlebars;
@@ -3724,17 +3712,6 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 
   Handlebars = create();
   Handlebars.create = create;
-
-  /*jshint -W040 */
-  /* istanbul ignore next */
-  var root = typeof global !== 'undefined' ? global : window,
-      $Handlebars = root.Handlebars;
-  /* istanbul ignore next */
-  Handlebars.noConflict = function() {
-    if (root.Handlebars === Handlebars) {
-      root.Handlebars = $Handlebars;
-    }
-  };
 
   Handlebars['default'] = Handlebars;
 
