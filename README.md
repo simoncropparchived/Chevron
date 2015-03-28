@@ -10,7 +10,14 @@ Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/Msi
 
 #### [Chevron.IE.Merged](http://nuget.org/packages/Chevron.IE.Merged)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.IE.Merged.svg?style=flat)](https://www.nuget.org/packages/Chevron.IE.Merged/)
 
-ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) assembly to avoid an extra dependency 
+
+#### [Chevron.Jint](http://nuget.org/packages/Chevron.Jint)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.Jint.svg?style=flat)](https://www.nuget.org/packages/Chevron.Jint/)
+
+Has a dependency on the [Jint](https://github.com/sebastienros/jint) package. 
+
+#### [Chevron.Jint.Merged](http://nuget.org/packages/Chevron.Jint.Merged)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.Jint.Merged.svg?style=flat)](https://www.nuget.org/packages/Chevron.Jint.Merged/)
+
+ILMerges the [Jint](https://github.com/sebastienros/jint) assembly to avoid an extra dependency 
 
 #### [Chevron.V8](http://nuget.org/packages/Chevron.V8)  [![NuGet Status](http://img.shields.io/nuget/v/Chevron.V8.svg?style=flat)](https://www.nuget.org/packages/Chevron.V8/)
 
@@ -24,35 +31,41 @@ Has a dependency on the [MsieJavaScriptEngine](http://www.nuget.org/packages/Msi
 
 ILMerges the [MsieJavaScriptEngine](http://www.nuget.org/packages/MsieJavaScriptEngine) and Chevron.IE assembly to avoid an any extra dependencies. 
 
+#### [Nancy.ViewEngines.Handlebars.Jint](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.Jint)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.Jint.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.Jint/)
+
+Has a dependency on the [Jint](https://github.com/sebastienros/jint) and Chevron.Jint packages. 
+
+#### [Nancy.ViewEngines.Handlebars.Jint.Merged](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.Jint.Merged)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.Jint.Merged.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.Jint.Merged/)
+
+ILMerges the [Jint](https://github.com/sebastienros/jint) and Chevron.Jint assembly to avoid an any extra dependencies. 
+
 #### [Nancy.ViewEngines.Handlebars.V8](http://nuget.org/packages/Nancy.ViewEngines.Handlebars.V8)  [![NuGet Status](http://img.shields.io/nuget/v/Nancy.ViewEngines.Handlebars.V8.svg?style=flat)](https://www.nuget.org/packages/Nancy.ViewEngines.Handlebars.V8/)
 
 Has a dependency on the [ClearScript.V8](http://www.nuget.org/packages/ClearScript.V8) and Chevron.V8 packages. 
 
 ## What Nuget to choose
 
-### IE or V8
+### IE or V8 or Jint
 
 #### Performance
 
-In my basic testing V8 was (in most cases) faster than IE. Note that this testing was done on the IE 10 engine and the IE 11 engine is rumored to have significant performance improvements.
+In my basic testing V8 was (in most cases) faster than IE. Note that this testing was done on the IE 10 engine and the IE 11 engine is rumored to have significant performance improvements. I have done no testing on Jint performance.
 
 #### Consistency
 
-When using the V8 engine you can control the specific version that is used. When using the IE engine the specific version of the engine can vary with windows updates. 
-
-#### Portability
-
-V8 will, in theory, run on a non windows platform (I have not done any testing of this). IE is tied to Windows.
+When using the V8 or Jint engines you can control the specific version that is used. When using the IE engine the specific version of the engine can vary with windows updates. 
 
 #### Packaging and deployment
 
-V8 is a native dll, to the nuget package needs to tweak your project file to manually copy it to the output directory. While this generally works it is is more moving pieces and not seamless when upgrading packages or when double hop references are used. IE is a single .net dll and is managed as such
+V8 is a native dll, to the nuget package needs to tweak your project file to manually copy it to the output directory. While this generally works it is is more moving pieces and not seamless when upgrading packages or when double hop references are used. IE and Jint are single .net dlls and are managed as such
 
 #### Size
 
-IE is significantly smaller than V8
+ * IE: 78KB
+ * Jint: 233KB
+ * V8: 5MB
 
-### Merged IE or Non-Merged IE
+### Merged or Non-Merged IE/Jint
 
 If you only want to render simple files then use the merged version. If you want full control over the JS engine (eg to load custom scripts) then use the non-merged version.
 
