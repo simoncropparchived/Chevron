@@ -7,7 +7,6 @@ using Resourcer;
 
 namespace Chevron
 {
-
     public class Handlebars : IDisposable
     {
 #if (IE)
@@ -15,6 +14,7 @@ namespace Chevron
 
         public Handlebars(MsieJavaScriptEngine.MsieJsEngine engine)
         {
+            Guard.AgainstNull(engine, "engine");
             this.engine = engine;
             var handlebarsJsText = GetHandlebarsJsText();
             engine.Execute(handlebarsJsText);
@@ -30,6 +30,7 @@ namespace Chevron
 
         public Handlebars(Jint.Engine engine)
         {
+            Guard.AgainstNull(engine, "engine");
             this.engine = engine;
             var handlebarsJsText = GetHandlebarsJsText();
             engine.Execute(handlebarsJsText);
@@ -45,6 +46,7 @@ namespace Chevron
 
         public Handlebars(Microsoft.ClearScript.V8.V8ScriptEngine engine)
         {
+            Guard.AgainstNull(engine, "engine");
             this.engine = engine;
             var handlebarsJsText = GetHandlebarsJsText();
             engine.Execute(handlebarsJsText);
@@ -59,7 +61,6 @@ namespace Chevron
         List<string> registeredTemplates = new List<string>();
         List<string> registeredPartials = new List<string>(); 
         List<string> registeredHelpers = new List<string>(); 
-
 
         /// <summary>
         /// Get the content of handlebars.js
@@ -82,6 +83,8 @@ namespace Chevron
 
         public void RegisterHelper(string name, Func<string> js)
         {
+            Guard.AgainstNull(js, "js");
+            Guard.AgainstNullAndEmpty(name, "name");
             if (!registeredHelpers.Contains(name))
             {
                 registeredHelpers.Add(name);
@@ -99,15 +102,17 @@ namespace Chevron
         }
         public string TransformStringContext(string templateName, object o)
         {
+            Guard.AgainstNullAndEmpty(templateName, "templateName");
             templateName = templateName.ToLowerInvariant();
 
             CheckTemplate(templateName);
             return engine.Invoke("chevronTemplate_" + templateName, o).AsString();
         }
 #else
-        
+
         public string Transform(string templateName, object context)
         {
+            Guard.AgainstNullAndEmpty(templateName, "templateName");
             var serializeObject = SerializeObject(context);
             return TransformStringContext(templateName, serializeObject, context);
         }
@@ -123,6 +128,8 @@ namespace Chevron
 
         public string TransformStringContext(string templateName, string context, object o)
         {
+            Guard.AgainstNullAndEmpty(templateName, "templateName");
+            Guard.AgainstNull(context, "context");
             templateName = templateName.ToLowerInvariant();
 
             CheckTemplate(templateName);
@@ -139,13 +146,18 @@ namespace Chevron
             }
         }
 
-        public void RegisterTemplate(string name, string source)
+        public void RegisterTemplate(string templateName, string source)
         {
-            RegisterTemplate(name, ()=>source);
+            RegisterTemplate(templateName, () => source);
         }
 
         public void RegisterTemplate(string templateName, Func<string> content)
         {
+            Guard.AgainstNullAndEmpty(templateName, "templateName");
+            if (char.IsNumber(templateName[0]))
+            {
+                throw new ArgumentException("'templateName' cannot start with a number.","templateName");
+            }
             templateName = templateName.ToLowerInvariant();
             if (!registeredTemplates.Contains(templateName))
             {
@@ -194,11 +206,14 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
 
         public void RegisterPartial(string partialName, string content)
         {
+            Guard.AgainstNullAndEmpty(content, "content");
             RegisterPartial(partialName, () => content);
         }
 
         public void RegisterPartial(string partialName, Func<string> content)
         {
+            Guard.AgainstNullAndEmpty(partialName, "partialName");
+            Guard.AgainstNull(content, "content");
             if (!registeredPartials.Contains(partialName))
             {
                 registeredPartials.Add(partialName);
