@@ -1,4 +1,5 @@
-﻿using ApprovalTests;
+﻿using System;
+using ApprovalTests;
 using Chevron;
 using NUnit.Framework;
 
@@ -46,6 +47,28 @@ public class HandlebarsTest
         {
             handleBars.RegisterTemplate("Index", source);
             Approvals.Verify(handleBars.Transform("Index", null));
+        }
+    }
+
+    [Test]
+    public void NumberInTemplateName()
+    {
+        var source = "AA\r\nBB";
+
+        using (var handleBars = new Handlebars())
+        {
+            handleBars.RegisterTemplate("Index1", source);
+            Approvals.Verify(handleBars.Transform("Index1", null));
+        }
+    }
+
+    [Test]
+    public void NumberAtStartOfTemplateName()
+    {
+        using (var handleBars = new Handlebars())
+        {
+            var argumentException = Assert.Throws<ArgumentException>(() => { handleBars.RegisterTemplate("1Index", "AA"); });
+            Assert.AreEqual("'templateName' cannot start with a number.\r\nParameter name: templateName", argumentException.Message);
         }
     }
 

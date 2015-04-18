@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="AssemblyLocation.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="Handlebars.cs" />
     <Compile Include="VariableNameValidator.cs" />
     <Compile Include="SimpleJson.cs" />

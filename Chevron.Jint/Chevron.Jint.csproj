@@ -71,6 +71,9 @@
     <Compile Include="..\Chevron.IE\Extensions.cs">
       <Link>Extensions.cs</Link>
     </Compile>
+    <Compile Include="..\Chevron.IE\Guard.cs">
+      <Link>Guard.cs</Link>
+    </Compile>
     <Compile Include="..\Chevron.IE\Handlebars.cs">
       <Link>Handlebars.cs</Link>
     </Compile>
