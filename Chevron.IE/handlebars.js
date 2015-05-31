@@ -1,3 +1,4 @@
+// ReSharper disable IdentifierTypo
 /*!
 
  handlebars v3.0.3

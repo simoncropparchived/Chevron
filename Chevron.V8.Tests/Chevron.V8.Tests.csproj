@@ -38,9 +38,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ApprovalUtilities.3.0.8\lib\net35\ApprovalUtilities.dll</HintPath>
     </Reference>
-    <Reference Include="ClearScript, Version=5.4.1.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
+    <Reference Include="ClearScript, Version=5.4.2.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ClearScript.V8.5.4.1\lib\ClearScript.dll</HintPath>
+      <HintPath>..\packages\ClearScript.V8.5.4.2\lib\net40\ClearScript.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,9 +80,8 @@
   <PropertyGroup>
     <PostBuildEvent>
 if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.1\tools\native\x86\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2\tools\native\x86\*.*" "$(TargetDir)"
 if not exist "$(TargetDir)" md "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.1\tools\native\amd64\*.*" "$(TargetDir)"
-    </PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.2\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
