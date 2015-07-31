@@ -151,6 +151,19 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
         }
     }
     [Test]
+    public void PartialWithNewline()
+    {
+        var partial = "thepartial\r\n";
+
+        var source = @"<li>{{> partial}}</li>";
+        using (var handleBars = new Handlebars())
+        {
+            handleBars.RegisterPartial("partial", partial);
+            handleBars.RegisterTemplate("myTemplate", source);
+            Approvals.Verify(handleBars.Transform("myTemplate", new object()));
+        }
+    }
+    [Test]
     [Ignore]
     public void MissingPartial()
     {

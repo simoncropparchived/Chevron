@@ -194,7 +194,10 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
                     stringBuilder.AppendLine(line);
                 }
             }
-
+            if (templateContent.EndsWith("\n"))
+            {
+                stringBuilder.AppendLine();
+            }
             var result = stringBuilder.ToString();
             return HttpUtility.JavaScriptStringEncode(result);
         }
