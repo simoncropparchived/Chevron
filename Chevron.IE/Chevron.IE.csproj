@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Chevron.IE</RootNamespace>
     <AssemblyName>Chevron.IE</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>58632180</NuGetPackageImportStamp>
@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Chevron.IE.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Chevron.IE.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deployable|AnyCPU'">
     <OutputPath>bin\Deployable\</OutputPath>
@@ -42,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Deployable\Chevron.IE.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Janitor, Version=1.1.3.0, Culture=neutral, PublicKeyToken=d34c7d3bba3746e6, processorArchitecture=MSIL">
@@ -103,18 +106,18 @@
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(TempDir)" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).nuspec" DestinationFolder="$(TempDir)" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET40" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET40" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET40" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET45" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET45" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET45" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
     <ItemGroup>
       <FilesToDelete Include="$(TempMergedDir)**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
-    <MakeDir Directories="$(TempMergedDir)Lib\NET40" />
-    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET40\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
+    <MakeDir Directories="$(TempMergedDir)Lib\NET45" />
+    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET45\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET40" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET45" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
   </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
