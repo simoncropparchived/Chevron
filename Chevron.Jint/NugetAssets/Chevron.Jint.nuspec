@@ -14,7 +14,7 @@
     <language>en-AU</language>
     <tags>handlebars.js, Chevron, handlebars</tags>
     <dependencies>
-      <dependency id="Jint"  version="[2.5.0, 3.0.0)" />
+      <dependency id="Jint" version="[2.7.0, 3.0.0)" />
     </dependencies>
   </metadata>
 </package>
