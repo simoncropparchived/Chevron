@@ -9,7 +9,7 @@ namespace Chevron
         {
             if (variableName.Any(ch => !IsValidChar(ch)))
             {
-                throw new Exception(string.Format("The string '{0}' is not a valid name.", variableName));
+                throw new Exception($"The string '{variableName}' is not a valid name.");
             }
         }
 

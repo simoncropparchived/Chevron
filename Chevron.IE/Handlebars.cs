@@ -88,7 +88,7 @@ namespace Chevron
             if (!registeredHelpers.Contains(name))
             {
                 registeredHelpers.Add(name);
-                var code = string.Format(@"Handlebars.registerHelper('{0}', {1});", name, js());
+                var code = $@"Handlebars.registerHelper('{name}', {js()});";
                 engine.Execute(code);
             }
         }
@@ -133,7 +133,7 @@ namespace Chevron
             templateName = templateName.ToLowerInvariant();
 
             CheckTemplate(templateName);
-            var expression = string.Format("chevronTemplate_{0}({1});", templateName, context);
+            var expression = $"chevronTemplate_{templateName}({context});";
             return (string)engine.Evaluate(expression);
         }
 
@@ -142,7 +142,7 @@ namespace Chevron
         {
             if (!registeredTemplates.Contains(templateName))
             {
-                throw new Exception(string.Format("Could not find a template named '{0}'.", templateName));
+                throw new Exception($"Could not find a template named '{templateName}'.");
             }
         }
 
@@ -222,7 +222,7 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
                 registeredPartials.Add(partialName);
                 var templateContent = content();
                 templateContent = SanitizeContent(templateContent);
-                var code = string.Format("Handlebars.registerPartial('{0}', '{1}');", partialName, templateContent);
+                var code = $"Handlebars.registerPartial('{partialName}', '{templateContent}');";
                 engine.Execute(code);
             }
         }

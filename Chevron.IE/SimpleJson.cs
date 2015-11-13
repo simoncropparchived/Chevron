@@ -615,7 +615,7 @@ namespace Chevron.IE
         {
             StringBuilder builder = new StringBuilder(BUILDER_CAPACITY);
             bool success = SerializeValue(jsonSerializerStrategy, json, builder);
-            return (success ? builder.ToString() : null);
+            return success ? builder.ToString() : null;
         }
 
         public static string SerializeObject(object json)
@@ -906,7 +906,7 @@ namespace Chevron.IE
         {
             EatWhitespace(json, ref index);
             int lastIndex = GetLastIndexOfNumber(json, index);
-            int charLength = (lastIndex - index) + 1;
+            int charLength = lastIndex - index + 1;
             object returnNumber;
             string str = new string(json, index, charLength);
             if (str.IndexOf(".", StringComparison.OrdinalIgnoreCase) != -1 || str.IndexOf("e", StringComparison.OrdinalIgnoreCase) != -1)
@@ -1703,14 +1703,14 @@ namespace Chevron.IE
 
                 Type genericDefinition = type.GetGenericTypeDefinition();
 
-                return (genericDefinition == typeof(IList<>)
+                return genericDefinition == typeof(IList<>)
                     || genericDefinition == typeof(ICollection<>)
                     || genericDefinition == typeof(IEnumerable<>)
 #if SIMPLE_JSON_READONLY_COLLECTIONS
                     || genericDefinition == typeof(IReadOnlyCollection<>)
                     || genericDefinition == typeof(IReadOnlyList<>)
 #endif
-                    );
+                    ;
             }
 
             public static bool IsAssignableFrom(Type type1, Type type2)
@@ -1916,7 +1916,7 @@ namespace Chevron.IE
             {
                 MethodInfo getMethodInfo = GetGetterMethodInfo(propertyInfo);
                 ParameterExpression instance = Expression.Parameter(typeof(object), "instance");
-                UnaryExpression instanceCast = (!IsValueType(propertyInfo.DeclaringType)) ? Expression.TypeAs(instance, propertyInfo.DeclaringType) : Expression.Convert(instance, propertyInfo.DeclaringType);
+                UnaryExpression instanceCast = !IsValueType(propertyInfo.DeclaringType) ? Expression.TypeAs(instance, propertyInfo.DeclaringType) : Expression.Convert(instance, propertyInfo.DeclaringType);
                 Func<object, object> compiled = Expression.Lambda<Func<object, object>>(Expression.TypeAs(Expression.Call(instanceCast, getMethodInfo), typeof(object)), instance).Compile();
                 return delegate(object source) { return compiled(source); };
             }
@@ -1967,8 +1967,8 @@ namespace Chevron.IE
                 MethodInfo setMethodInfo = GetSetterMethodInfo(propertyInfo);
                 ParameterExpression instance = Expression.Parameter(typeof(object), "instance");
                 ParameterExpression value = Expression.Parameter(typeof(object), "value");
-                UnaryExpression instanceCast = (!IsValueType(propertyInfo.DeclaringType)) ? Expression.TypeAs(instance, propertyInfo.DeclaringType) : Expression.Convert(instance, propertyInfo.DeclaringType);
-                UnaryExpression valueCast = (!IsValueType(propertyInfo.PropertyType)) ? Expression.TypeAs(value, propertyInfo.PropertyType) : Expression.Convert(value, propertyInfo.PropertyType);
+                UnaryExpression instanceCast = !IsValueType(propertyInfo.DeclaringType) ? Expression.TypeAs(instance, propertyInfo.DeclaringType) : Expression.Convert(instance, propertyInfo.DeclaringType);
+                UnaryExpression valueCast = !IsValueType(propertyInfo.PropertyType) ? Expression.TypeAs(value, propertyInfo.PropertyType) : Expression.Convert(value, propertyInfo.PropertyType);
                 Action<object, object> compiled = Expression.Lambda<Action<object, object>>(Expression.Call(instanceCast, setMethodInfo, valueCast), new ParameterExpression[] { instance, value }).Compile();
                 return delegate(object source, object val) { compiled(source, val); };
             }
@@ -1997,7 +1997,7 @@ namespace Chevron.IE
             {
                 public static T Assign(ref T left, T right)
                 {
-                    return (left = right);
+                    return left = right;
                 }
             }
 

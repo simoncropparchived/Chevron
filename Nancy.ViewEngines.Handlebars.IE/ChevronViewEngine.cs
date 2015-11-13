@@ -89,7 +89,7 @@ namespace Nancy.ViewEngines.Handlebars
                             var templateContents = viewLocationResult.Contents().ReadToEnd();
                             if (templateContents.Contains("{{> _") || templateContents.Contains("{{>_"))
                             {
-                                throw new Exception(string.Format("Template '{0}' contains and underscore prefixed partial name. This is no longer required. Search for the string '{{>_' or '{{> _' in your template and remove the '_'.", templateName));
+                                throw new Exception($"Template '{templateName}' contains and underscore prefixed partial name. This is no longer required. Search for the string '{{>_' or '{{> _' in your template and remove the '_'.");
                             }
                             throw;
                         }
