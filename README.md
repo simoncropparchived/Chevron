@@ -219,7 +219,7 @@ The binary ships with a resource merged version of [HandlebarsJS](http://handleb
 
 ### Current merged version
 
-The current version included in the library is v3.0.3. If you feel a newer version should be included at any point in time please raise an issue.
+The current version included in the library is v4.0.4. If you feel a newer version should be included at any point in time please raise an issue.
 
 
 ### Running a custom version
