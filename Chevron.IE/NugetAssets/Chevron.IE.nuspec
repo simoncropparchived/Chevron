@@ -14,7 +14,7 @@
     <language>en-AU</language>
     <tags>handlebars.js, Chevron, handlebars</tags>
     <dependencies>
-      <dependency id="MsieJavaScriptEngine" version="[1.5.5, 2.0.0)" />
+      <dependency id="MsieJavaScriptEngine" version="[1.6.0, 2.0.0)" />
     </dependencies>
   </metadata>
 </package>

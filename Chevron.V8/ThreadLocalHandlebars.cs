@@ -21,13 +21,7 @@ namespace Chevron
         {
         }
 
-        public Handlebars Value
-        {
-            get
-            {
-                return threadLocal.Value;
-            }
-        }
+        public Handlebars Value => threadLocal.Value;
 
         // ReSharper disable once UnusedMember.Local
         void DisposeManaged()

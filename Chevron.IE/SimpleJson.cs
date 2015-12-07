@@ -77,6 +77,9 @@ using Chevron.IE.Reflection;
 // ReSharper disable JoinDeclarationAndInitializer
 // ReSharper disable BuiltInTypeReferenceStyle
 // ReSharper disable TooWideLocalVariableScope
+// ReSharper disable ConvertPropertyToExpressionBody
+// ReSharper disable RedundantArrayCreationExpression
+// ReSharper disable UseObjectOrCollectionInitializer
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation

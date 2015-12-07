@@ -21,7 +21,10 @@ namespace Chevron
         }
 
         public Handlebars()
-            : this(new MsieJavaScriptEngine.MsieJsEngine(MsieJavaScriptEngine.JsEngineMode.Auto))
+            : this(new MsieJavaScriptEngine.MsieJsEngine(new MsieJavaScriptEngine.JsEngineSettings
+            {
+                EngineMode = MsieJavaScriptEngine.JsEngineMode.Auto
+            }))
         {
         }
 #endif

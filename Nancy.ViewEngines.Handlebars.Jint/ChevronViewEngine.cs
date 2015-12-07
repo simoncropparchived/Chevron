@@ -27,10 +27,7 @@ namespace Nancy.ViewEngines.Handlebars
         /// <summary>
         /// Gets the extensions file extensions that are supported by the view engine.
         /// </summary>
-        public IEnumerable<string> Extensions
-        {
-            get { return new[] {"handlebars"}; }
-        }
+        public IEnumerable<string> Extensions => new[] {"handlebars"};
 
         /// <summary>
         /// Initialise the view engine (if necessary)
