@@ -14,7 +14,7 @@
     <language>en-AU</language>
     <tags>handlebars.js, Chevron, handlebars</tags>
     <dependencies>
-      <dependency id="ClearScript.V8" version="[5.4.3, 6.0.0)" />
+      <dependency id="ClearScript.V8" version="[5.4.4, 6.0.0)" />
     </dependencies>
   </metadata>
 </package>

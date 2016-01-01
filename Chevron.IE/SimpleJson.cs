@@ -80,6 +80,7 @@ using Chevron.IE.Reflection;
 // ReSharper disable ConvertPropertyToExpressionBody
 // ReSharper disable RedundantArrayCreationExpression
 // ReSharper disable UseObjectOrCollectionInitializer
+// ReSharper disable RedundantAssignment
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation
