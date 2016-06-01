@@ -2,5 +2,5 @@
 
 [assembly: AssemblyTitle("Chevron")]
 [assembly: AssemblyProduct("Chevron")]
-[assembly: AssemblyVersion("1.5.2")]
-[assembly: AssemblyFileVersion("1.5.2")]
+[assembly: AssemblyVersion("1.6.0")]
+[assembly: AssemblyFileVersion("1.6.0")]
