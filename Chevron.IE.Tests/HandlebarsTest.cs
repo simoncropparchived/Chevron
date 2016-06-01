@@ -164,7 +164,7 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
         }
     }
     [Test]
-    [Ignore]
+    [Explicit]
     public void MissingPartial()
     {
         var partial = @"<a href=""/people/{{id}}"">{{name}}</a>";

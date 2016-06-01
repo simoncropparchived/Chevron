@@ -1,3 +1,4 @@
+// ReSharper disable CommentTypo
 // ReSharper disable IdentifierTypo
 // ReSharper disable ConvertClosureToMethodGroup
 // ReSharper disable ConvertToLambdaExpression
@@ -101,12 +102,12 @@ namespace Chevron.IE
  class JsonArray : List<object>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonArray"/> class. 
+        /// Initializes a new instance of the <see cref="JsonArray"/> class.
         /// </summary>
         public JsonArray() { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonArray"/> class. 
+        /// Initializes a new instance of the <see cref="JsonArray"/> class.
         /// </summary>
         /// <param name="capacity">The capacity of the json array.</param>
         public JsonArray(int capacity) : base(capacity) { }
@@ -503,7 +504,7 @@ namespace Chevron.IE
     /// <summary>
     /// This class encodes and decodes JSON strings.
     /// Spec. details, see http://www.json.org/
-    /// 
+    ///
     /// JSON uses Arrays and Objects. These correspond here to the datatypes JsonArray(IList&lt;object>) and JsonObject(IDictionary&lt;string,object>).
     /// All numbers are parsed to doubles.
     /// </summary>
@@ -1236,7 +1237,7 @@ namespace Chevron.IE
 
 #endif
     }
-    
+
     [GeneratedCode("simple-json", "1.0.0")]
 #if SIMPLE_JSON_INTERNAL
     internal
@@ -1350,7 +1351,7 @@ namespace Chevron.IE
 
             if (value == null)
                 return null;
-            
+
             object obj = null;
 
             if (str != null)
@@ -1373,8 +1374,8 @@ namespace Chevron.IE
 
 												return null;
                     }
-                  
-									if (type == typeof(string))  
+
+									if (type == typeof(string))
 										return str;
 
 									return Convert.ChangeType(str, type, CultureInfo.InvariantCulture);
@@ -1394,7 +1395,7 @@ namespace Chevron.IE
             }
             else if (value is bool)
                 return value;
-            
+
             bool valueIsLong = value is long;
             bool valueIsDouble = value is double;
             if ((valueIsLong && type == typeof(long)) || (valueIsDouble && type == typeof(double)))
