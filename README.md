@@ -115,7 +115,7 @@ var context = new
 using (var handleBars = new Handlebars())
 {
     handleBars.RegisterTemplate("myTemplate", source);
-    Approvals.Verify(handleBars.Transform("myTemplate", context));
+    var result = handleBars.Transform("myTemplate", context);
 }
 ```
 
@@ -155,7 +155,7 @@ using (var handleBars = new Handlebars())
 return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body + ""</a>"");
 }");
     handleBars.RegisterTemplate("myTemplate", source);
-    Approvals.Verify(handleBars.Transform("myTemplate", context));
+    var result = handleBars.Transform("myTemplate", context);
 }
 ```
 
@@ -197,7 +197,7 @@ using (var handleBars = new Handlebars())
 {
     handleBars.RegisterPartial("link",@"<a href=""/people/{{id}}"">{{name}}</a>");
     handleBars.RegisterTemplate("myTemplate", source);
-    Approvals.Verify(handleBars.Transform("myTemplate", context));
+    var result = handleBars.Transform("myTemplate", context);
 }
 ```
 
