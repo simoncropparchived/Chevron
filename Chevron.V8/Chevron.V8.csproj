@@ -38,13 +38,12 @@
     <Reference Include="ClearScript, Version=5.5.0.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
       <HintPath>..\packages\ClearScript.V8.5.5.0.1\lib\net45\ClearScript.dll</HintPath>
     </Reference>
-    <Reference Include="Janitor, Version=1.2.2.0, Culture=neutral, PublicKeyToken=d34c7d3bba3746e6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Janitor.Fody.1.2.2.0\Lib\dotnet\Janitor.dll</HintPath>
+    <Reference Include="Janitor, Version=1.5.2.0, Culture=neutral, PublicKeyToken=d34c7d3bba3746e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Janitor.Fody.1.5.2\Lib\portable-net4+sl5+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\Janitor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Resourcer, Version=0.0.0.0, Culture=neutral, PublicKeyToken=409b3227471b0f0d, processorArchitecture=MSIL">
-      <HintPath>..\packages\Resourcer.Fody.1.4.3\Lib\portable-net45+netcore45+wpa81+wp8\Resourcer.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Resourcer.Fody.1.6.1.0\lib\net452\Resourcer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -93,9 +92,9 @@
     <EmbeddedResource Include="..\Chevron.IE\handlebars.js">
       <Link>handlebars.js</Link>
     </EmbeddedResource>
-    <Content Include="FodyWeavers.xml">
+    <None Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -125,9 +124,9 @@ xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.5.0.1\tools\native\amd64\*.
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\PepitaPackage.1.21.6\build\PepitaPackage.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PepitaPackage.1.21.6\build\PepitaPackage.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.2.2.1.0\build\net452\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.2.1.0\build\net452\Fody.targets'))" />
   </Target>
-  <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Import Project="..\packages\PepitaPackage.1.21.6\build\PepitaPackage.targets" Condition="Exists('..\packages\PepitaPackage.1.21.6\build\PepitaPackage.targets')" />
+  <Import Project="..\packages\Fody.2.2.1.0\build\net452\Fody.targets" Condition="Exists('..\packages\Fody.2.2.1.0\build\net452\Fody.targets')" />
 </Project>
