@@ -37,7 +37,6 @@ namespace Nancy.ViewEngines.Handlebars
             viewLocator = viewEngineStartupContext.ViewLocator;
         }
 
-
         /// <summary>
         /// Renders the view.
         /// </summary>
@@ -98,7 +97,6 @@ namespace Nancy.ViewEngines.Handlebars
 
         public void Dispose()
         {
-            
         }
     }
 }

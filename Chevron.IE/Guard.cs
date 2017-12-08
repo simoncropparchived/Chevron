@@ -12,6 +12,7 @@ namespace Chevron
                 throw new ArgumentNullException(argumentName);
             }
         }
+
         public static void AgainstNullAndEmpty(string value, string argumentName)
         {
             if (string.IsNullOrWhiteSpace(value))

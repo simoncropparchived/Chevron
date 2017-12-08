@@ -4,5 +4,4 @@
     {
         return target.Replace("\r\n", "\n");
     }
-
 }

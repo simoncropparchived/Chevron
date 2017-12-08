@@ -155,7 +155,7 @@ return new Handlebars.SafeString(""<a href='"" + this.url + ""'>"" + this.body +
     {
         var partial = "thepartial\r\n";
 
-        var source = @"<li>{{> partial}}</li>";
+        var source = "<li>{{> partial}}</li>";
         using (var handleBars = new Handlebars())
         {
             handleBars.RegisterPartial("partial", partial);

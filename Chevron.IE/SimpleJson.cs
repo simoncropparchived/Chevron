@@ -82,6 +82,8 @@ using Chevron.IE.Reflection;
 // ReSharper disable RedundantArrayCreationExpression
 // ReSharper disable UseObjectOrCollectionInitializer
 // ReSharper disable RedundantAssignment
+// ReSharper disable InlineOutVariableDeclaration
+// ReSharper disable UsePatternMatching
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable RedundantExplicitArrayCreation

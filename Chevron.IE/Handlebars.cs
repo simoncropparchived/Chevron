@@ -62,8 +62,8 @@ namespace Chevron
 #endif
 
         List<string> registeredTemplates = new List<string>();
-        List<string> registeredPartials = new List<string>(); 
-        List<string> registeredHelpers = new List<string>(); 
+        List<string> registeredPartials = new List<string>();
+        List<string> registeredHelpers = new List<string>();
 
         /// <summary>
         /// Get the content of handlebars.js
@@ -71,7 +71,7 @@ namespace Chevron
         /// </summary>
         public string GetHandlebarsJsText()
         {
-            var markedPath = Path.Combine(AssemblyLocation.CurrentDirectory, @"handlebars.js");
+            var markedPath = Path.Combine(AssemblyLocation.CurrentDirectory, "handlebars.js");
             if (File.Exists(markedPath))
             {
                 return File.ReadAllText(markedPath);
@@ -96,9 +96,7 @@ namespace Chevron
             }
         }
 
-
 #if(Jint)
-
         public string Transform(string templateName, object context)
         {
             return TransformStringContext(templateName,  context);
@@ -233,6 +231,5 @@ var chevronTemplate_{0} = Handlebars.compile({0}_source);", templateName, templa
         public void Dispose()
         {
         }
-
     }
 }

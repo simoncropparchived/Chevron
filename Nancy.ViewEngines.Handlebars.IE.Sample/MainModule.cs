@@ -15,6 +15,5 @@ public class MainModule : NancyModule
             };
             return View["Index.handlebars", model];
         };
-
     }
 }

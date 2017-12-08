@@ -2,12 +2,10 @@
 using System.Diagnostics;
 using Nancy.Hosting.Self;
 
-
 public static class Program
 {
     public static void Main()
     {
-
         using (var nancyHost = new NancyHost(new Uri("http://localhost:8888/")))
         {
             nancyHost.Start();
@@ -17,7 +15,5 @@ public static class Program
 
             Console.ReadKey();
         }
-
     }
-
 }
