@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nancy.ViewEngines.Handlebars.IE</RootNamespace>
     <AssemblyName>Nancy.ViewEngines.Handlebars.IE</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -106,18 +106,18 @@
     <Delete Files="@(FilesToDelete)" />
     <MakeDir Directories="$(TempDir)" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).nuspec" DestinationFolder="$(TempDir)" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)Lib\NET45" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)Lib\NET45" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)Lib\NET45" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TempDir)lib\net452" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).pdb" DestinationFolder="$(TempDir)lib\net452" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempDir)lib\net452" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
     <ItemGroup>
       <FilesToDelete Include="$(TempMergedDir)**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
-    <MakeDir Directories="$(TempMergedDir)Lib\NET45" />
-    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)Lib\NET45\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true" />
+    <MakeDir Directories="$(TempMergedDir)lib\net452" />
+    <Exec Command="&quot;$(SolutionDir)Tools\ilmerge.exe&quot; /out:&quot;$(TempMergedDir)lib\net452\$(TargetFileName)&quot; &quot;$(TargetPath)&quot; &quot;$(TargetDir)MsieJavaScriptEngine.dll&quot; &quot;$(TargetDir)Chevron.IE.dll&quot; /target:library /targetplatform:&quot;v4,$(FrameworkPathOverride)&quot;" LogStandardErrorAsError="true" ConsoleToMSBuild="true" />
     <Copy SourceFiles="$(ProjectDir)NugetAssets\$(TargetName).Merged.nuspec" DestinationFolder="$(TempMergedDir)" />
-    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)Lib\NET45" />
+    <Copy SourceFiles="$(OutputPath)$(TargetName).xml" DestinationFolder="$(TempMergedDir)lib\net452" />
     <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(TempMergedDir)" TargetDir="$(NugetsDir)" MetadataAssembly="$(TargetPath)" />
   </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
